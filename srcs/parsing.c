@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/28 22:05:41 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:32:05 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,43 @@ int is_int(char *str)
     return (1);
 }
 
+/* convert():
+*   Converts values and stores them in an int array.
+*   Checks for duplicates and return Error if found.
+*/
 int *convert(int argc, char **argv)
 {
     int *arr;
     int i;
-
+    int j;
+    
     arr = (int *)malloc(sizeof(int) * (argc - 1));
     if (!arr)
         return (0);
     i = 1;
+    j = 0;
     while (argv[i])
     {
         arr[i - 1] = ft_atoi(argv[i]);
+        j = 0;
+        while (j < i - 1)
+        {
+            if (arr[i - 1] == arr[j])
+                ft_error();
+            j++;
+        }
         i++;
     }
     return (arr);
 }
 
-/* parse_args:
+/* parse_args():
 *   This funct will perform parsing of the user input
 *   1. Checks the existence of at least one argument.
 *   2. Checks for non integer numeric input.
 *   3. Convert the input to an int array with ft_atoi
         that will check for overflow and underflow.
-    4. Checks for duplicates.
+    4. Checks for duplicates inside convert().
 */
 int *parse_args(int argc, char **argv)
 {
@@ -84,6 +97,9 @@ int *parse_args(int argc, char **argv)
         i++;
     }
     arr = convert(argc, argv);
+
+    
+
     return (arr);
 }
 
