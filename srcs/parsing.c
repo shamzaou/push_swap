@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/28 22:32:05 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:46:56 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int *parse_args(int argc, char **argv)
     int *arr = NULL;
     int i;
     int j;
-
+        // this must be verified
     if (argc < 2)
-        ft_error();
+        exit(1);
 
     i = 1;
     j = 0;
@@ -103,7 +103,7 @@ int *parse_args(int argc, char **argv)
     return (arr);
 }
 
-int main(int ac, char **av)
+/*int main(int ac, char **av)
 {
     int i = 0;
     int *arr = parse_args(ac, av);
@@ -114,4 +114,4 @@ int main(int ac, char **av)
         i++;
     }
     
-}
+}*/

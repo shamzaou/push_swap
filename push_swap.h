@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/28 22:06:30 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:37:32 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack
 #endif 
 
 
-t_stack *create_stack(int argc, char **argv);
+t_stack *create_stack(int argc, int *arr);
 void    append_node(int data, t_stack **prevNode);
 void    print_list(t_stack* head);
 void    ft_error(void);

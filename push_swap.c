@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/28 10:25:00 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:39:23 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void print_list(t_stack* head)
 int main(int argc, char **argv)
 {
     t_stack *head;
-    head = create_stack(argc, argv);
+    int *arr = parse_args(argc, argv);
+    head = create_stack(argc, arr);
     print_list(head);
 }
