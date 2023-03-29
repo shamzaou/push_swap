@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:23:21 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/29 18:00:32 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 00:24:56 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void    append_node(int data, t_stack **prevNode)
 {
     t_stack *newNode = malloc(sizeof(t_stack));
     (*prevNode)->next = newNode;
+    newNode->prev = *prevNode;
     newNode->next = NULL;
     newNode->data = data;
 }
@@ -27,14 +28,14 @@ t_stack *create_stack(int argc, int *arr)
     
     t_stack *node = malloc(sizeof(t_stack));
     node->data = arr[0];
-    node->previous = NULL;
+    node->prev = NULL;
     node->next = NULL;
     head = node;
     
     i = 1;
-    if (argc > 2)
+    if (argc > 1)
     {
-        while (i < argc - 1)
+        while (i < argc)
         {
             append_node(arr[i], &node);
             node = node->next;

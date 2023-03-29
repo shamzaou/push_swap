@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "__hash_table": "c",
+        "locale": "c",
+        "memory": "c"
+    }
+}
