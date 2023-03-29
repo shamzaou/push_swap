@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/28 22:46:56 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:52:34 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int *convert(int argc, char **argv)
 *   1. Checks the existence of at least one argument.
 *   2. Checks for non integer numeric input.
 *   3. Convert the input to an int array with ft_atoi
-        that will check for overflow and underflow.
-    4. Checks for duplicates inside convert().
+*       that will check for overflow and underflow.
+*   4. Checks for duplicates inside convert().
 */
 int *parse_args(int argc, char **argv)
 {
