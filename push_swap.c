@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/28 22:39:23 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:57:47 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ void print_list(t_stack* head)
     printf("\n");
 }
 
+// Fixed leaks, careful with the stack allocations.. 
+// current code only frees the head.
 int main(int argc, char **argv)
 {
-    t_stack *head;
+    t_stack *head = NULL;
     int *arr = parse_args(argc, argv);
     head = create_stack(argc, arr);
+    free(arr);
     print_list(head);
+    free(head);
 }
