@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/29 16:52:34 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:33:48 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,12 @@ int *parse_args(int argc, char **argv)
 {
     int *arr = NULL;
     int i;
-    int j;
+
         // this must be verified
     if (argc < 2)
         exit(1);
 
     i = 1;
-    j = 0;
     while (i < argc)
     {
         if (!is_int(argv[i]))

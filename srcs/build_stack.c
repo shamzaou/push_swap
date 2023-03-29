@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:23:21 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/29 17:03:18 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:34:17 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ t_stack *create_stack(int argc, int *arr)
         }    
     }
     // freeeeeee check
-    free(arr);
+    
     return (head);
 }
