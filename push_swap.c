@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 06:50:56 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/31 03:50:47 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,12 @@ int main(int argc, char **argv)
     int *arr;
     int num_elements;
     int i;
+    t_stack *head = NULL;
 
     num_elements = parse_args(argc, argv, &arr);
-
-    printf("Input values:\n");
-    for (i = 0; i < num_elements; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-
+    head = create_stack(num_elements, arr);
+    print_list(head);
+    // free stack func
     free(arr);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:40:59 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 20:20:20 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/31 03:33:41 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,6 @@ int ft_atoi(char *str)
     }
     return (sign * result);
 }
-
-/*int main(int ac, char **av)
-{
-    printf("Value : %d\n", ft_atoi(av[1]));
-}*/
 
 static size_t	str_length(char const *str, char c, size_t	start)
 {

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/31 01:48:57 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/31 03:50:16 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,146 +79,6 @@ int *convert(int argc, char **argv)
 *       that will check for overflow and underflow.
 *   4. Checks for duplicates inside convert().
 */
-/*int *parse_args(int argc, char **argv)
-{
-    int *arr = NULL;
-    int i;
-
-        // this must be verified
-    if (argc < 2)
-        exit(1);
-
-    i = 1;
-    while (i < argc)
-    {
-        if (!is_int(argv[i]))
-            ft_error();
-        i++;
-    }
-    arr = convert(argc, argv);
-
-    
-
-    return (arr);
-}*/
-
-/*int main(int ac, char **av)
-{
-    int i = 0;
-    int *arr = parse_args(ac, av);
-
-    while (i < ac - 1)
-    {
-        printf("element : %d\n", arr[i]);
-        i++;
-    }
-    
-}*/
-/*
-int *parse_args(int argc, char **argv)
-{
-    int *arr = NULL;
-    int token_count = 0;
-    int i, j;
-
-    if (argc < 2)
-        exit(1);
-
-    // Count the total number of tokens (numbers) across all arguments
-    for (i = 1; i < argc; ++i)
-    {
-        char *token = strtok(argv[i], " ");
-        while (token != NULL)
-        {
-            token_count++;
-            token = strtok(NULL, " ");
-        }
-    }
-
-    // Allocate memory for the array
-    arr = (int *)malloc(sizeof(int) * token_count);
-
-    // Fill the array with the numbers from each argument
-    j = 0;
-    for (i = 1; i < argc; ++i)
-    {
-        char *token = strtok(argv[i], " ");
-        while (token != NULL)
-        {
-            if (!is_int(token))
-                ft_error();
-            arr[j++] = ft_atoi(token);
-            token = strtok(NULL, " ");
-        }
-    }
-
-    return (arr);
-}
-*/
-
-/*
-                THIS IS THE CORRECT VERSION====================
-int count_numbers(char *str)
-{
-    int count = 0;
-    int i = 0;
-
-    while (str[i])
-    {
-        while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-            i++;
-        if (str[i] && (str[i] != ' ' && str[i] != '\t'))
-        {
-            count++;
-            while (str[i] && (str[i] != ' ' && str[i] != '\t'))
-                i++;
-        }
-    }
-    return (count);
-}
-
-int parse_args(int argc, char **argv, int **arr_ptr)
-{
-    int total_numbers = 0;
-    int *arr;
-    int i;
-    int j;
-    char *token;
-
-    for (i = 1; i < argc; i++)
-        total_numbers += count_numbers(argv[i]);
-
-    arr = (int *)malloc(sizeof(int) * total_numbers);
-    if (!arr)
-        return (0);
-
-    j = 0;
-    for (i = 1; i < argc; i++)
-    {
-        token = strtok(argv[i], " \t");
-        while (token != NULL)
-        {
-            if (!is_int(token))
-                ft_error();
-            arr[j++] = ft_atoi(token);
-            token = strtok(NULL, " \t");
-        }
-    }
-
-    for (i = 0; i < total_numbers; i++)
-    {
-        for (j = i + 1; j < total_numbers; j++)
-        {
-            if (arr[i] == arr[j])
-                ft_error();
-        }
-    }
-
-    *arr_ptr = arr;
-    return total_numbers;
-}
-*/
-
 int parse_args(int argc, char **argv, int **arr_ptr)
 {
     int total_numbers = 0;
@@ -227,8 +87,14 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     int j;
     char **tokens;
 
+    if (argc < 2)
+        exit(1);
     for (i = 1; i < argc; i++)
+    {
+        if (is_empty_or_whitespace(argv[i]))
+            ft_error();
         total_numbers += count_numbers(argv[i]);
+    }
 
     arr = (int *)malloc(sizeof(int) * total_numbers);
     if (!arr)
@@ -270,6 +136,20 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     return total_numbers;
 }
 
+
+// Add a new helper function to check if a string contains only spaces
+int is_only_spaces(const char *str)
+{
+    while (*str)
+    {
+        if (*str != ' ' && *str != '\t')
+            return 0;
+        str++;
+    }
+    return 1;
+}
+
+
 int count_numbers(const char *str)
 {
     int count = 0;
@@ -292,4 +172,15 @@ int count_numbers(const char *str)
     free(tokens);
 
     return count;
+}
+
+int is_empty_or_whitespace(const char *str)
+{
+    while (*str)
+    {
+        if (!isspace((unsigned char)*str))
+            return 0;
+        str++;
+    }
+    return 1;
 }

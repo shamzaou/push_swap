@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 20:30:32 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/31 03:33:23 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 typedef struct s_stack
 {
@@ -59,7 +60,8 @@ void    pb(t_stack **stack_a, t_stack **stack_b);
 char	**ft_split(char const *s, char c);
 int count_numbers(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
+int is_only_spaces(const char *str);
+int is_empty_or_whitespace(const char *str);
 
 int stack_len(t_stack *stack);
 int find_median(t_stack *stack, int len);
