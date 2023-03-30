@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 06:50:44 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/31 01:48:57 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,8 @@ int *parse_args(int argc, char **argv)
 }
 */
 
-
+/*
+                THIS IS THE CORRECT VERSION====================
 int count_numbers(char *str)
 {
     int count = 0;
@@ -215,4 +216,80 @@ int parse_args(int argc, char **argv, int **arr_ptr)
 
     *arr_ptr = arr;
     return total_numbers;
+}
+*/
+
+int parse_args(int argc, char **argv, int **arr_ptr)
+{
+    int total_numbers = 0;
+    int *arr;
+    int i;
+    int j;
+    char **tokens;
+
+    for (i = 1; i < argc; i++)
+        total_numbers += count_numbers(argv[i]);
+
+    arr = (int *)malloc(sizeof(int) * total_numbers);
+    if (!arr)
+        return (0);
+
+    j = 0;
+    for (i = 1; i < argc; i++)
+    {
+        tokens = ft_split(argv[i], ' ');
+        int k = 0;
+        while (tokens[k] != NULL)
+        {
+            if (!is_int(tokens[k]))
+                ft_error();
+            arr[j++] = ft_atoi(tokens[k]);
+            k++;
+        }
+
+        // Free the memory allocated for the tokens
+        int l = 0;
+        while (tokens[l] != NULL)
+        {
+            free(tokens[l]);
+            l++;
+        }
+        free(tokens);
+    }
+
+    for (i = 0; i < total_numbers; i++)
+    {
+        for (j = i + 1; j < total_numbers; j++)
+        {
+            if (arr[i] == arr[j])
+                ft_error();
+        }
+    }
+
+    *arr_ptr = arr;
+    return total_numbers;
+}
+
+int count_numbers(const char *str)
+{
+    int count = 0;
+    char **tokens = ft_split(str, ' ');
+
+    int i = 0;
+    while (tokens[i] != NULL)
+    {
+        count++;
+        i++;
+    }
+
+    // Free the memory allocated for the tokens
+    int j = 0;
+    while (tokens[j] != NULL)
+    {
+        free(tokens[j]);
+        j++;
+    }
+    free(tokens);
+
+    return count;
 }
