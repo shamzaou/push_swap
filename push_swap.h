@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 06:54:39 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 07:32:02 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int     ft_atoi(char *str);
 int     is_sign(char *str);
 int     is_int(char *str);
 int     *convert(int argc, char **argv);
-int     parse_args(int argc, char **argv, int **arr_ptr);
+int *parse_args(int argc, char **argv);
+int count_args(int argc, char **argv);
+int     count_numbers(char *str);
 t_stack *swap(t_stack *stack_to_swap);
 void    sa(t_stack **stack_a);
 void    sb(t_stack **stack_b);
@@ -61,5 +63,9 @@ int stack_len(t_stack *stack);
 int find_median(t_stack *stack, int len);
 int partition(t_stack **stack_a, t_stack **stack_b, int len, int pivot);
 void quicksort(t_stack **stack_a, t_stack **stack_b, int len);
+
+void radix_sort(t_stack **stack);
+void counting_sort(t_stack **stack, int exp);
+int find_max_value(t_stack *stack);
 
 #endif

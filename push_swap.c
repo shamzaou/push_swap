@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 06:50:56 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 07:31:19 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,28 @@ void print_list(t_stack* head)
 
 int main(int argc, char **argv)
 {
+    t_stack *original_stack, *sorted_stack;
     int *arr;
-    int num_elements;
-    int i;
+    int i, array_size;
 
-    num_elements = parse_args(argc, argv, &arr);
+    arr = parse_args(argc, argv);
+    array_size = count_args(argc, argv);
 
-    printf("Input values:\n");
-    for (i = 0; i < num_elements; i++)
+    printf("Array size: %d\n", array_size);
+    printf("Array elements: ");
+    for (i = 0; i < array_size; i++)
     {
         printf("%d ", arr[i]);
     }
     printf("\n");
 
-    free(arr);
-    return (0);
+    original_stack = create_stack(array_size, arr);
+    sorted_stack = radix_sort(&original_stack);
+
+    printf("Original stack:\n");
+    print_list(original_stack);
+    printf("Sorted stack:\n");
+    print_list(sorted_stack);
+
+    return 0;
 }

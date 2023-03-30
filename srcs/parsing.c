@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 06:50:44 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 07:23:48 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,92 +71,6 @@ int *convert(int argc, char **argv)
     return (arr);
 }
 
-/* parse_args():
-*   This funct will perform parsing of the user input
-*   1. Checks the existence of at least one argument.
-*   2. Checks for non integer numeric input.
-*   3. Convert the input to an int array with ft_atoi
-*       that will check for overflow and underflow.
-*   4. Checks for duplicates inside convert().
-*/
-/*int *parse_args(int argc, char **argv)
-{
-    int *arr = NULL;
-    int i;
-
-        // this must be verified
-    if (argc < 2)
-        exit(1);
-
-    i = 1;
-    while (i < argc)
-    {
-        if (!is_int(argv[i]))
-            ft_error();
-        i++;
-    }
-    arr = convert(argc, argv);
-
-    
-
-    return (arr);
-}*/
-
-/*int main(int ac, char **av)
-{
-    int i = 0;
-    int *arr = parse_args(ac, av);
-
-    while (i < ac - 1)
-    {
-        printf("element : %d\n", arr[i]);
-        i++;
-    }
-    
-}*/
-/*
-int *parse_args(int argc, char **argv)
-{
-    int *arr = NULL;
-    int token_count = 0;
-    int i, j;
-
-    if (argc < 2)
-        exit(1);
-
-    // Count the total number of tokens (numbers) across all arguments
-    for (i = 1; i < argc; ++i)
-    {
-        char *token = strtok(argv[i], " ");
-        while (token != NULL)
-        {
-            token_count++;
-            token = strtok(NULL, " ");
-        }
-    }
-
-    // Allocate memory for the array
-    arr = (int *)malloc(sizeof(int) * token_count);
-
-    // Fill the array with the numbers from each argument
-    j = 0;
-    for (i = 1; i < argc; ++i)
-    {
-        char *token = strtok(argv[i], " ");
-        while (token != NULL)
-        {
-            if (!is_int(token))
-                ft_error();
-            arr[j++] = ft_atoi(token);
-            token = strtok(NULL, " ");
-        }
-    }
-
-    return (arr);
-}
-*/
-
-
 int count_numbers(char *str)
 {
     int count = 0;
@@ -176,43 +90,73 @@ int count_numbers(char *str)
     return (count);
 }
 
-int parse_args(int argc, char **argv, int **arr_ptr)
+int count_args(int argc, char **argv)
 {
-    int total_numbers = 0;
-    int *arr;
-    int i;
-    int j;
-    char *token;
+    int i, j, count;
 
+    count = 0;
     for (i = 1; i < argc; i++)
-        total_numbers += count_numbers(argv[i]);
+    {
+        j = 0;
+        while (argv[i][j])
+        {
+            if (ft_isdigit(argv[i][j]) || is_sign(&argv[i][j]))
+            {
+                count++;
+                while (argv[i][j] && (ft_isdigit(argv[i][j]) || is_sign(&argv[i][j])))
+                {
+                    j++;
+                }
+            }
+            else
+            {
+                j++;
+            }
+        }
+    }
+    return count;
+}
 
-    arr = (int *)malloc(sizeof(int) * total_numbers);
+int *parse_args(int argc, char **argv)
+{
+    int *arr;
+    int arg_count;
+    int i, j, k;
+
+    arg_count = count_args(argc, argv);
+    arr = (int *)malloc(sizeof(int) * arg_count);
     if (!arr)
         return (0);
 
-    j = 0;
+    k = 0;
     for (i = 1; i < argc; i++)
     {
-        token = strtok(argv[i], " \t");
-        while (token != NULL)
+        j = 0;
+        while (argv[i][j])
         {
-            if (!is_int(token))
-                ft_error();
-            arr[j++] = ft_atoi(token);
-            token = strtok(NULL, " \t");
+            if (ft_isdigit(argv[i][j]) || is_sign(&argv[i][j]))
+            {
+                arr[k++] = ft_atoi(&argv[i][j]);
+                while (argv[i][j] && (ft_isdigit(argv[i][j]) || is_sign(&argv[i][j])))
+                {
+                    j++;
+                }
+            }
+            else
+            {
+                j++;
+            }
         }
     }
 
-    for (i = 0; i < total_numbers; i++)
+    for (i = 0; i < arg_count; i++)
     {
-        for (j = i + 1; j < total_numbers; j++)
+        for (j = i + 1; j < arg_count; j++)
         {
             if (arr[i] == arr[j])
                 ft_error();
         }
     }
 
-    *arr_ptr = arr;
-    return total_numbers;
+    return arr;
 }
