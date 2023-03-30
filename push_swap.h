@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/29 23:57:47 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 03:36:58 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,10 @@ void    rrb(t_stack **stack_b);
 void    rrr(t_stack **stack_a, t_stack **stack_b);
 void    pa(t_stack **stack_b, t_stack **stack_a);
 void    pb(t_stack **stack_a, t_stack **stack_b);
+
+int stack_len(t_stack *stack);
+int find_median(t_stack *stack, int len);
+int partition(t_stack **stack_a, t_stack **stack_b, int len, int pivot);
+void quicksort(t_stack **stack_a, t_stack **stack_b, int len);
 
 #endif

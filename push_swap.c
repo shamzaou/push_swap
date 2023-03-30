@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 00:37:56 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 03:29:49 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int main(int argc, char **argv)
     stack_a = create_stack(argc - 1, arr);
     stack_b = NULL;
 
+    quicksort(&stack_a, &stack_b, argc - 1);
+    /*
     printf("Initial stacks:\n");
     printf("Stack A: ");
     print_list(stack_a);
@@ -106,7 +108,7 @@ int main(int argc, char **argv)
     print_list(stack_a);
     printf("Stack B: ");
     print_list(stack_b);
-
+    */
     free(arr);
     // Add functions to free the stacks' memory
     return (0);
