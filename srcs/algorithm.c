@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 07:12:30 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 07:45:52 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,58 +24,59 @@ int find_max_value(t_stack *stack)
     return max_value;
 }
 
-void counting_sort(t_stack **stack, int exp)
+void counting_sort(t_stack **stack, t_stack **sorted_stack, int exp, int array_size)
 {
-    t_stack *output = NULL;
+    t_stack *temp = NULL;
     int count[10] = {0};
-    t_stack *current;
+    int i;
+    t_stack *current = *stack;
 
-    current = *stack;
     while (current != NULL)
     {
-        count[(current->data / exp) % 10]++;
+        int index = (current->data / exp) % 10;
+        count[index]++;
         current = current->next;
     }
 
-    for (int i = 1; i < 10; i++)
-        count[i] += count[i - 1];
-
-    current = *stack;
-    while (current != NULL)
+    for (i = 1; i < 10; i++)
     {
-        t_stack *next = current->next;
-        int index = (current->data / exp) % 10;
-        count[index]--;
-        current->next = NULL;
-        current->prev = NULL;
-
-        if (output == NULL)
-        {
-            output = current;
-        }
-        else
-        {
-            t_stack *temp = output;
-            for (int i = 0; i < count[index]; i++)
-                temp = temp->next;
-
-            if (temp->prev)
-            {
-                temp->prev->next = current;
-                current->prev = temp->prev;
-            }
-            temp->prev = current;
-            current->next = temp;
-        }
-        current = next;
+        count[i] += count[i - 1];
     }
 
-    *stack = output;
+    for (i = array_size - 1; i >= 0; i--)
+    {
+        current = *stack;
+        int position = i;
+        while (position > 0)
+        {
+            current = current->next;
+            position--;
+        }
+
+        int index = (current->data / exp) % 10;
+        append_node(current->data, &temp);
+        temp->next = (*sorted_stack);
+        if (*sorted_stack != NULL)
+        {
+            (*sorted_stack)->prev = temp;
+        }
+        *sorted_stack = temp;
+        count[index]--;
+    }
 }
 
-void radix_sort(t_stack **stack)
+
+void radix_sort(t_stack **stack, int array_size)
 {
-    int max_value = find_max_value(*stack);
-    for (int exp = 1; max_value / exp > 0; exp *= 10)
-        counting_sort(stack, exp);
+    int max = find_max_value(*stack);
+    int exp;
+    t_stack *sorted_stack = NULL;
+
+    for (exp = 1; max / exp > 0; exp *= 10)
+    {
+        counting_sort(stack, &sorted_stack, exp, array_size);
+    }
+
+    *stack = sorted_stack;
 }
+

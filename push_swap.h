@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 07:32:02 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 07:45:25 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int find_median(t_stack *stack, int len);
 int partition(t_stack **stack_a, t_stack **stack_b, int len, int pivot);
 void quicksort(t_stack **stack_a, t_stack **stack_b, int len);
 
-void radix_sort(t_stack **stack);
-void counting_sort(t_stack **stack, int exp);
+void radix_sort(t_stack **stack, int array_size);
+void counting_sort(t_stack **stack, t_stack **sorted_stack, int exp, int array_size);
 int find_max_value(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 07:31:19 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 07:41:57 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     printf("\n");
 
     original_stack = create_stack(array_size, arr);
-    sorted_stack = radix_sort(&original_stack);
+    radix_sort(&original_stack, array_size);
 
     printf("Original stack:\n");
     print_list(original_stack);
