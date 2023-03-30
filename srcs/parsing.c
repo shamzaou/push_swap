@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/29 18:01:31 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 06:50:44 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int *convert(int argc, char **argv)
 *       that will check for overflow and underflow.
 *   4. Checks for duplicates inside convert().
 */
-int *parse_args(int argc, char **argv)
+/*int *parse_args(int argc, char **argv)
 {
     int *arr = NULL;
     int i;
@@ -100,7 +100,7 @@ int *parse_args(int argc, char **argv)
     
 
     return (arr);
-}
+}*/
 
 /*int main(int ac, char **av)
 {
@@ -114,3 +114,105 @@ int *parse_args(int argc, char **argv)
     }
     
 }*/
+/*
+int *parse_args(int argc, char **argv)
+{
+    int *arr = NULL;
+    int token_count = 0;
+    int i, j;
+
+    if (argc < 2)
+        exit(1);
+
+    // Count the total number of tokens (numbers) across all arguments
+    for (i = 1; i < argc; ++i)
+    {
+        char *token = strtok(argv[i], " ");
+        while (token != NULL)
+        {
+            token_count++;
+            token = strtok(NULL, " ");
+        }
+    }
+
+    // Allocate memory for the array
+    arr = (int *)malloc(sizeof(int) * token_count);
+
+    // Fill the array with the numbers from each argument
+    j = 0;
+    for (i = 1; i < argc; ++i)
+    {
+        char *token = strtok(argv[i], " ");
+        while (token != NULL)
+        {
+            if (!is_int(token))
+                ft_error();
+            arr[j++] = ft_atoi(token);
+            token = strtok(NULL, " ");
+        }
+    }
+
+    return (arr);
+}
+*/
+
+
+int count_numbers(char *str)
+{
+    int count = 0;
+    int i = 0;
+
+    while (str[i])
+    {
+        while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+            i++;
+        if (str[i] && (str[i] != ' ' && str[i] != '\t'))
+        {
+            count++;
+            while (str[i] && (str[i] != ' ' && str[i] != '\t'))
+                i++;
+        }
+    }
+    return (count);
+}
+
+int parse_args(int argc, char **argv, int **arr_ptr)
+{
+    int total_numbers = 0;
+    int *arr;
+    int i;
+    int j;
+    char *token;
+
+    for (i = 1; i < argc; i++)
+        total_numbers += count_numbers(argv[i]);
+
+    arr = (int *)malloc(sizeof(int) * total_numbers);
+    if (!arr)
+        return (0);
+
+    j = 0;
+    for (i = 1; i < argc; i++)
+    {
+        token = strtok(argv[i], " \t");
+        while (token != NULL)
+        {
+            if (!is_int(token))
+                ft_error();
+            arr[j++] = ft_atoi(token);
+            token = strtok(NULL, " \t");
+        }
+    }
+
+    for (i = 0; i < total_numbers; i++)
+    {
+        for (j = i + 1; j < total_numbers; j++)
+        {
+            if (arr[i] == arr[j])
+                ft_error();
+        }
+    }
+
+    *arr_ptr = arr;
+    return total_numbers;
+}

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 03:36:58 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/30 06:54:39 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
+#include <string.h>
 
 typedef struct s_stack
 {
@@ -40,7 +41,7 @@ int     ft_atoi(char *str);
 int     is_sign(char *str);
 int     is_int(char *str);
 int     *convert(int argc, char **argv);
-int     *parse_args(int argc, char **argv);
+int     parse_args(int argc, char **argv, int **arr_ptr);
 t_stack *swap(t_stack *stack_to_swap);
 void    sa(t_stack **stack_a);
 void    sb(t_stack **stack_b);
