@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/02 11:42:57 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/02 21:20:34 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,5 @@ void push_smaller_than_pivot(t_stack **stack_a, t_stack **stack_b, int len, int 
 void    three_sort(t_stack **stack_a);
 void    five_sort(t_stack **stack_a);
 
-
-void merge(t_stack **stack_a, t_stack **stack_b, int len_a, int len_b);
-void merge_sort(t_stack **stack_a, t_stack **stack_b, int len);
-int is_sorted(t_stack *stack);
 
 #endif

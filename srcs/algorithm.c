@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/02 11:43:34 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/02 23:43:09 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void quicksort(t_stack **stack_a, t_stack **stack_b, int len)
     }
 }
 */
-/*
+
 void    three_sort(t_stack **stack_a)
 {
     int top;
@@ -127,73 +127,8 @@ void five_sort(t_stack **stack_a)
     pb(stack_a, &stack_b);
     pb(stack_a, &stack_b);
     three_sort(stack_a);
+    pa(&stack_b, stack_a);
     
-}*/
-
-int is_sorted(t_stack *stack)
-{
-    while (stack != NULL && stack->next != NULL)
-    {
-        if (stack->data > stack->next->data)
-        {
-            return 0;
-        }
-        stack = stack->next;
-    }
-    return 1;
+    
+    +
 }
-
-void merge_sort(t_stack **stack_a, t_stack **stack_b, int len)
-{
-    if (len <= 1 || is_sorted(*stack_a))
-    {
-        return;
-    }
-
-    int mid = len / 2;
-
-    // Move the top half of stack_a to stack_b
-    for (int i = 0; i < mid; i++)
-    {
-        pb(stack_a, stack_b);
-    }
-
-    merge_sort(stack_a, stack_b, len - mid);
-    merge_sort(stack_b, stack_a, mid);
-
-    merge(stack_a, stack_b, len - mid, mid);
-}
-
-void merge(t_stack **stack_a, t_stack **stack_b, int len_a, int len_b)
-{
-    int i = 0, j = 0;
-
-    while (i < len_a && j < len_b)
-    {
-        if ((*stack_b)->data < (*stack_a)->data)
-        {
-            pa(stack_b, stack_a);
-            j++;
-        }
-        else
-        {
-            ra(stack_a);
-            i++;
-        }
-    }
-
-    // Move any remaining elements from stack_b to stack_a
-    while (j < len_b)
-    {
-        pa(stack_b, stack_a);
-        j++;
-    }
-
-    // Adjust stack_a to its original state
-    for (int k = 0; k < len_a; k++)
-    {
-        rra(stack_a);
-    }
-}
-
-
