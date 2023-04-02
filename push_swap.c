@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/31 03:50:47 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/02 11:43:41 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,41 @@ void print_list(t_stack* head)
 }
 
 
+/*
+int main(int argc, char **argv)
+{
+    int *arr;
+    int num_elements;
+    int i;
+    t_stack *stack_a = NULL;
+    t_stack *stack_b = NULL;
+
+    num_elements = parse_args(argc, argv, &arr);
+    stack_a = create_stack(num_elements, arr);
+    int len = stack_len(stack_a);
+    quicksort(&stack_a, &stack_b, len);
+    print_list(stack_a);
+    // free stack func
+    free(arr);
+    return (0);
+}*/
 
 int main(int argc, char **argv)
 {
     int *arr;
     int num_elements;
     int i;
-    t_stack *head = NULL;
+    t_stack *stack_a = NULL;
+    t_stack *stack_b = NULL;
 
     num_elements = parse_args(argc, argv, &arr);
-    head = create_stack(num_elements, arr);
-    print_list(head);
+    stack_a = create_stack(argc - 1, arr);
+    print_list(stack_a);
+
+    merge_sort(&stack_a, &stack_b, num_elements);
+
+    print_list(stack_a);
+
     // free stack func
     free(arr);
     return (0);

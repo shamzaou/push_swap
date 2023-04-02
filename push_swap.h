@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/31 03:33:23 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/02 11:42:57 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int is_only_spaces(const char *str);
 int is_empty_or_whitespace(const char *str);
 
+
 int stack_len(t_stack *stack);
 int find_median(t_stack *stack, int len);
 int partition(t_stack **stack_a, t_stack **stack_b, int len, int pivot);
 void quicksort(t_stack **stack_a, t_stack **stack_b, int len);
+void push_smaller_than_pivot(t_stack **stack_a, t_stack **stack_b, int len, int pivot);
+
+void    three_sort(t_stack **stack_a);
+void    five_sort(t_stack **stack_a);
+
+
+void merge(t_stack **stack_a, t_stack **stack_b, int len_a, int len_b);
+void merge_sort(t_stack **stack_a, t_stack **stack_b, int len);
+int is_sorted(t_stack *stack);
 
 #endif
