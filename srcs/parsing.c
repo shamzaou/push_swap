@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/31 03:50:16 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/03/31 23:47:48 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,6 @@ int count_numbers(const char *str)
         count++;
         i++;
     }
-
     // Free the memory allocated for the tokens
     int j = 0;
     while (tokens[j] != NULL)
@@ -170,7 +169,6 @@ int count_numbers(const char *str)
         j++;
     }
     free(tokens);
-
     return count;
 }
 
