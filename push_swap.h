@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/02 21:20:34 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/03 10:14:38 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_stack *rev_rotate(t_stack *stack);
 void    rra(t_stack **stack_a);
 void    rrb(t_stack **stack_b);
 void    rrr(t_stack **stack_a, t_stack **stack_b);
-void    pa(t_stack **stack_b, t_stack **stack_a);
+void    pa(t_stack **stack_a, t_stack **stack_b);
 void    pb(t_stack **stack_a, t_stack **stack_b);
 char	**ft_split(char const *s, char c);
 int count_numbers(const char *str);
@@ -63,15 +63,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int is_only_spaces(const char *str);
 int is_empty_or_whitespace(const char *str);
 
-
-int stack_len(t_stack *stack);
-int find_median(t_stack *stack, int len);
-int partition(t_stack **stack_a, t_stack **stack_b, int len, int pivot);
-void quicksort(t_stack **stack_a, t_stack **stack_b, int len);
-void push_smaller_than_pivot(t_stack **stack_a, t_stack **stack_b, int len, int pivot);
-
 void    three_sort(t_stack **stack_a);
 void    five_sort(t_stack **stack_a);
-
+void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value, int n);
 
 #endif

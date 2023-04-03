@@ -6,13 +6,13 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 22:45:11 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/30 00:41:07 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/03 07:01:55 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void    pb(t_stack **stack_a, t_stack **stack_b)
+static void push(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *first_a;
     
@@ -26,11 +26,16 @@ void    pb(t_stack **stack_a, t_stack **stack_b)
     if (*stack_b != NULL)
         (*stack_b)->prev = first_a;
     *stack_b = first_a;
+}
+
+void    pb(t_stack **stack_a, t_stack **stack_b)
+{
+    push(stack_a, stack_b);
     ft_putstr("pb\n");
 }
 
 void    pa(t_stack **stack_a, t_stack **stack_b)
 {
-    pb(stack_b, stack_a);
+    push(stack_b, stack_a);
     ft_putstr("pa\n");
 }

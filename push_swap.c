@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/02 11:43:41 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/03 07:11:35 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int main(int argc, char **argv)
     stack_a = create_stack(argc - 1, arr);
     print_list(stack_a);
 
-    merge_sort(&stack_a, &stack_b, num_elements);
-
+    five_sort(&stack_a);
+    
     print_list(stack_a);
-
+    
     // free stack func
     free(arr);
     return (0);

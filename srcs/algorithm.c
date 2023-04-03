@@ -6,92 +6,11 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/02 23:43:09 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/03 10:20:42 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-/*
-int stack_len(t_stack *stack)
-{
-    int len = 0;
-    while (stack)
-    {
-        len++;
-        stack = stack->next;
-    }
-    return len;
-}
-
-int find_median(t_stack *stack, int len)
-{
-    t_stack *slow = stack;
-    t_stack *fast = stack;
-    int median;
-
-    if (len % 2 == 0)
-    {
-        len--;
-    }
-
-    while (len > 0 && fast && fast->next)
-    {
-        slow = slow->next;
-        fast = fast->next->next;
-        len -= 2;
-    }
-
-    median = slow->data;
-    return median;
-}
-
-int partition(t_stack **stack_a, t_stack **stack_b, int len, int pivot)
-{
-    int i;
-    int less_than_pivot_count = 0;
-
-    i = 0;
-    while (i < len)
-    {
-        if ((*stack_a)->data <= pivot) // change the condition here
-        {
-            pb(stack_a, stack_b);
-            less_than_pivot_count++;
-        }
-        else
-        {
-            ra(stack_a);
-        }
-        i++;
-    }
-
-    return less_than_pivot_count;
-}
-
-
-void quicksort(t_stack **stack_a, t_stack **stack_b, int len)
-{
-    int pivot;
-    int less_than_pivot_count;
-
-    if (len <= 1)
-        return;
-
-    pivot = find_median(*stack_a, len);
-    less_than_pivot_count = partition(stack_a, stack_b, len, pivot);
-
-    quicksort(stack_b, stack_a, less_than_pivot_count);
-    quicksort(stack_a, stack_b, len - less_than_pivot_count);
-
-        for (int i = 0; i < len; ++i)
-    {
-        if ((*stack_b)->data < (*stack_a)->data)
-            pa(stack_a, stack_b);
-        else
-            pb(stack_a, stack_b);
-    }
-}
-*/
 
 void    three_sort(t_stack **stack_a)
 {
@@ -120,15 +39,45 @@ void    three_sort(t_stack **stack_a)
         rra(stack_a);
 }
 
-void five_sort(t_stack **stack_a)
+void    insert_sorted(t_stack **stack_a, t_stack **stack_b, int value, int n)
 {
-    t_stack *stack_b;
+    t_stack *tmp = *stack_a;
+    int counter = 0;
 
+    if (value > (*stack_a)->next->next->data)
+        {
+            pa(stack_a, stack_b);
+            ra(stack_a);        
+        }
+    else 
+    {
+        while (tmp && tmp->data < value && n--)
+        {
+            ra(stack_a);
+            tmp = *stack_a;
+            counter++;
+        }
+        
+        pa(stack_a, stack_b);
+        while (counter--)
+            rra(stack_a);
+    }
+}
+
+void    five_sort(t_stack **stack_a)
+{
+    t_stack *stack_b = NULL;
+    int first;
+    int second;
+    
     pb(stack_a, &stack_b);
     pb(stack_a, &stack_b);
+
     three_sort(stack_a);
-    pa(&stack_b, stack_a);
     
-    
-    +
+    first = stack_b->data;
+    second = stack_b->next->data;
+
+    insert_sorted(stack_a, &stack_b, first, 3);
+    insert_sorted(stack_a, &stack_b, second, 4);
 }
