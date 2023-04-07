@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/07 15:06:50 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:28:19 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,20 @@ int ra_or_rra(t_stack *stack, int position)
         return (1);
 }
 
+int is_sorted(t_stack *stack)
+{
+    t_stack *current;
+
+    current = stack;
+    while (current && current->next)
+    {
+        if ( current->data > current->next->data)
+            return (0);
+        current = current->next;
+    }
+    return (1);
+}
+
 void    to_the_top(t_stack **stack)
 {
     t_stack *largest_node;
@@ -134,6 +148,9 @@ void    to_the_top(t_stack **stack)
     int *pos_ptr;
     int len;
     int i;
+    
+    if(!stack)
+        return;
     
     pos_ptr = &pos;
     largest_node = find_largest_node(*stack, pos_ptr);
@@ -146,7 +163,22 @@ void    to_the_top(t_stack **stack)
     }
     else
     {
-        while(--pos)
+        while(--pos >= 0)
+        {
             ra(stack);
+        }
+            
+    }
+}
+void    sort(t_stack **stack_a, t_stack **stack_b)
+{
+    if (!stack_a)
+        return;
+    while (1)
+    {
+        if (is_sorted(*stack_a) == 1)
+            return;
+        to_the_top(stack_a);
+        pb(stack_a, stack_b);
     }
 }
