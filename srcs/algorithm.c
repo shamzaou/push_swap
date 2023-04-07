@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/06 11:57:35 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:06:50 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,25 +130,23 @@ int ra_or_rra(t_stack *stack, int position)
 void    to_the_top(t_stack **stack)
 {
     t_stack *largest_node;
-    int     largest_pos;
-    int     *pos_ptr;
-    int     len;
+    int pos;
+    int *pos_ptr;
+    int len;
+    int i;
     
-    pos_ptr = &largest_pos;
+    pos_ptr = &pos;
     largest_node = find_largest_node(*stack, pos_ptr);
     len = stack_len(*stack);
-    if (largest_pos > len / 2)
+    if(pos > len / 2)
     {
-        while (largest_pos)
-        {
+        i = len - pos + 1;
+        while (i--)
             rra(stack);
-            largest_pos--;
-        }
     }
-    else 
-        while (largest_pos)
-        {
-            rra(stack);
-            largest_pos--;
-        }
+    else
+    {
+        while(--pos)
+            ra(stack);
+    }
 }

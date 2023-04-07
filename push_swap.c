@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/06 10:14:02 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:57:48 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,12 @@ int main(int argc, char **argv)
     printf("The list :\n");
     print_list(stack_a);
 
-    to_the_top(&stack_a);
 
+    to_the_top(&stack_a);
     printf("The NEW list :\n");
     print_list(stack_a);
+   
+
     
     // Now stack_a should be sorted
     // Perform any other required operations here
