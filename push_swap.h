@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/05 14:43:43 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/06 10:13:46 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ void    five_sort(t_stack **stack_a);
 void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value, int n);
 
 t_stack *find_largest_node(t_stack *head, int *pos_ptr);
-int stack_len(t_stack *stack);
+int     stack_len(t_stack *stack);
+int     ra_or_rra(t_stack *stack, int position);
+void    to_the_top(t_stack **stack);
+
 #endif

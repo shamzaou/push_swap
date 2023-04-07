@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/05 14:49:20 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/06 11:57:35 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ int stack_len(t_stack *stack)
 
 t_stack *find_largest_node(t_stack *head, int *pos_ptr)
 {
-    int pos = 0;
+    int pos = 1;
+    int largest_pos = 0;
     if (head == NULL) {
         return NULL;
     }
@@ -106,10 +107,48 @@ t_stack *find_largest_node(t_stack *head, int *pos_ptr)
     while (current != NULL) {
         if (current->data > largest_node->data) {
             largest_node = current;
-            pos++;
+            largest_pos = pos;
         }
+        pos++;
         current = current->next;
     }
-    *pos_ptr = pos;
+    *pos_ptr = largest_pos;
     return largest_node;
+}
+
+int ra_or_rra(t_stack *stack, int position)
+{
+    int len;
+    
+    len = stack_len(stack);
+    if (position > len / 2)
+        return (0);
+    else
+        return (1);
+}
+
+void    to_the_top(t_stack **stack)
+{
+    t_stack *largest_node;
+    int     largest_pos;
+    int     *pos_ptr;
+    int     len;
+    
+    pos_ptr = &largest_pos;
+    largest_node = find_largest_node(*stack, pos_ptr);
+    len = stack_len(*stack);
+    if (largest_pos > len / 2)
+    {
+        while (largest_pos)
+        {
+            rra(stack);
+            largest_pos--;
+        }
+    }
+    else 
+        while (largest_pos)
+        {
+            rra(stack);
+            largest_pos--;
+        }
 }

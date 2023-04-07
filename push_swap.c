@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/05 14:46:48 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/06 10:14:02 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,15 @@ int main(int argc, char **argv)
 
     t_stack *stack_a = create_stack(argc - 1, arr);
     free(arr);
+    
+    printf("The list :\n");
+    print_list(stack_a);
 
-    t_stack* largest_node = find_largest_node(stack_a, pos_ptr);
-    if (largest_node != NULL) {
-        printf("Largest node data: %d\n", largest_node->data);
-    } else {
-        printf("The list is empty.\n");
-    }
+    to_the_top(&stack_a);
 
-    printf("NODE POS : %d\n", pos);
-    printf("STACK LEN : %d\n", stack_len(stack_a));
+    printf("The NEW list :\n");
+    print_list(stack_a);
+    
     // Now stack_a should be sorted
     // Perform any other required operations here
 
