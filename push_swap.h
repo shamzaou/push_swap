@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/07 17:56:22 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:46:56 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int     stack_len(t_stack *stack);
 int     ra_or_rra(t_stack *stack, int position);
 void    to_the_top(t_stack **stack);
 void    sort(t_stack **stack_a, t_stack **stack_b);
+int find_smallest_node_position(t_stack *head);
 
 #endif

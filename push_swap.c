@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/07 18:20:04 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:03:59 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,16 @@ int main(int argc, char **argv)
     t_stack *stack_a = create_stack(argc - 1, arr);
     free(arr);
     
-    printf("The list :\n");
-    print_list(stack_a);
+    //printf("The list :\n");
+    //print_list(stack_a);
 
     t_stack *stack_b = NULL;
     
+    //sort(&stack_a, &stack_b);
     sort(&stack_a, &stack_b);
 
-    printf("The NEW list :\n");
-    print_list(stack_b);
-   
-
-    
+    //printf("The NEW list FINAL STACK A :\n");
+    //print_list(stack_a);
     // Now stack_a should be sorted
     // Perform any other required operations here
 

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/07 18:28:19 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:59:50 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,28 +93,30 @@ int stack_len(t_stack *stack)
     return len;
 }
 
-t_stack *find_largest_node(t_stack *head, int *pos_ptr)
+int find_smallest_node_position(t_stack *head)
 {
     int pos = 1;
-    int largest_pos = 0;
+    int smallest_pos = 1;
+
     if (head == NULL) {
-        return NULL;
+        return 0;
     }
 
     t_stack* current = head;
-    t_stack* largest_node = head;
+    t_stack* smallest_node = head;
 
     while (current != NULL) {
-        if (current->data > largest_node->data) {
-            largest_node = current;
-            largest_pos = pos;
+        if (current->data < smallest_node->data) {
+            smallest_node = current;
+            smallest_pos = pos;
         }
         pos++;
         current = current->next;
     }
-    *pos_ptr = largest_pos;
-    return largest_node;
+
+    return smallest_pos;
 }
+
 
 int ra_or_rra(t_stack *stack, int position)
 {
@@ -141,21 +143,19 @@ int is_sorted(t_stack *stack)
     return (1);
 }
 
-void    to_the_top(t_stack **stack)
+void to_the_top(t_stack **stack)
 {
-    t_stack *largest_node;
     int pos;
-    int *pos_ptr;
     int len;
     int i;
-    
-    if(!stack)
+
+    if (!stack || !(*stack))
         return;
-    
-    pos_ptr = &pos;
-    largest_node = find_largest_node(*stack, pos_ptr);
+
+    pos = find_smallest_node_position(*stack);
     len = stack_len(*stack);
-    if(pos > len / 2)
+
+    if (pos > len / 2)
     {
         i = len - pos + 1;
         while (i--)
@@ -163,22 +163,25 @@ void    to_the_top(t_stack **stack)
     }
     else
     {
-        while(--pos >= 0)
+        while (--pos > 0)
         {
             ra(stack);
         }
-            
     }
 }
+
 void    sort(t_stack **stack_a, t_stack **stack_b)
 {
-    if (!stack_a)
+    if (!stack_a || !(*stack_a) || is_sorted(*stack_a))
         return;
-    while (1)
+    while ((*stack_a))
     {
-        if (is_sorted(*stack_a) == 1)
-            return;
         to_the_top(stack_a);
         pb(stack_a, stack_b);
+    }
+    
+    while (*stack_b)
+    {
+        pa(stack_a, stack_b);
     }
 }
