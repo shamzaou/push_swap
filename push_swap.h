@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/07 20:46:56 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/08 10:46:58 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int count_numbers(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int is_only_spaces(const char *str);
 int is_empty_or_whitespace(const char *str);
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 void    three_sort(t_stack **stack_a);
 void    five_sort(t_stack **stack_a);
