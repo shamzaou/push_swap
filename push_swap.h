@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/08 10:46:58 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:14:50 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,22 @@ void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value, int n);
 t_stack *find_largest_node(t_stack *head, int *pos_ptr);
 int     stack_len(t_stack *stack);
 int     ra_or_rra(t_stack *stack, int position);
-void    to_the_top(t_stack **stack);
+int    to_the_top(t_stack **stack);
 void    sort(t_stack **stack_a, t_stack **stack_b);
-int find_smallest_node_position(t_stack *head);
+int     find_smallest_node_position(t_stack *head);
+int find_largest_node_position(t_stack *head);
+
+void partition(t_stack **stack_a, t_stack **stack_b, int low, int high, int *pivot_idx);
+void merge(t_stack **stack_a, t_stack **stack_b, int low, int high);
+void quick_sort_recursive(t_stack **stack_a, t_stack **stack_b, int low, int high);
+void quick_sort(t_stack **stack_a, t_stack **stack_b);
+int find_pivot(t_stack *stack, int low, int high);
+void to_the_top_at_position(t_stack **stack, int position);
+
+
+void my_sort(t_stack **stack_a, t_stack **stack_b);
+int ft_intstack_size(t_stack *stack);
+void gsort(t_stack **stack_a, t_stack **stack_b, int n, int pref);
+int find_median(t_stack *stack, int n);
 
 #endif

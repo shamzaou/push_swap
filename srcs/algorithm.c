@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/07 20:59:50 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/08 14:03:57 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,30 @@ int find_smallest_node_position(t_stack *head)
     return smallest_pos;
 }
 
+int find_largest_node_position(t_stack *head)
+{
+    int pos = 1;
+    int largest_pos = 1;
+
+    if (head == NULL) {
+        return 0;
+    }
+
+    t_stack* current = head;
+    t_stack* largest_node = head;
+
+    while (current != NULL) {
+        if (current->data > largest_node->data) {
+            largest_node = current;
+            largest_pos = pos;
+        }
+        pos++;
+        current = current->next;
+    }
+
+    return largest_pos;
+}
+
 
 int ra_or_rra(t_stack *stack, int position)
 {
@@ -143,45 +167,76 @@ int is_sorted(t_stack *stack)
     return (1);
 }
 
-void to_the_top(t_stack **stack)
+int to_the_top(t_stack **stack)
 {
-    int pos;
+    int index;
+    int pos_largest;
+    int pos_smallest;
     int len;
     int i;
+    int moved_element = 0; // 0 for the smallest element, 1 for the largest element
 
     if (!stack || !(*stack))
-        return;
+        return -1;
 
-    pos = find_smallest_node_position(*stack);
+    pos_smallest = find_smallest_node_position(*stack);
+    pos_largest = find_largest_node_position(*stack);
     len = stack_len(*stack);
 
-    if (pos > len / 2)
+    if ((pos_largest <= len / 2 && pos_smallest <= len / 2) || (pos_largest > len / 2 && pos_smallest > len / 2))
     {
-        i = len - pos + 1;
+        if (pos_largest < pos_smallest)
+        {
+            index = pos_largest;
+            moved_element = 1;
+        }
+        else
+        {
+            index = pos_smallest;
+            moved_element = 0;
+        }
+    }
+    else
+    {
+        index = pos_smallest;
+        moved_element = 0;
+    }
+
+    if (index > len / 2)
+    {
+        i = len - index + 1;
         while (i--)
             rra(stack);
     }
     else
     {
-        while (--pos > 0)
+        while (--index >= 0)
         {
             ra(stack);
         }
     }
+
+    return moved_element;
 }
+
 
 void    sort(t_stack **stack_a, t_stack **stack_b)
 {
+    int large_or_small;
+
     if (!stack_a || !(*stack_a) || is_sorted(*stack_a))
         return;
     while ((*stack_a))
     {
-        to_the_top(stack_a);
+        large_or_small = to_the_top(stack_a);
         pb(stack_a, stack_b);
+        if (large_or_small == 0)
+            rb(stack_b);
     }
     
-    while (*stack_b)
+    print_list(*stack_b);
+    /*while (*stack_b)
     {
         pa(stack_a, stack_b);
-    }
+    }*/
 }

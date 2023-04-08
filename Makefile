@@ -8,6 +8,7 @@ SRC_DIR = srcs
 ACTION_DIR = actions
 
 SRC = $(SRC_DIR)/algorithm.c \
+		$(SRC_DIR)/algorithm2.c \
 		$(SRC_DIR)/build_stack.c \
 		$(SRC_DIR)/ft_split.c \
 		$(SRC_DIR)/parsing.c \
