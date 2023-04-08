@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/08 16:27:07 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:47:40 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ int main(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    t_stack* head = NULL;
     int *arr;
-    int pos;
-    int *pos_ptr = &pos;
     
     
     if (!parse_args(argc, argv, &arr))

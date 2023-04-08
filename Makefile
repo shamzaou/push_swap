@@ -1,6 +1,6 @@
 NAME = push_swap
 
-FLAGS = 
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 CC = gcc
 
