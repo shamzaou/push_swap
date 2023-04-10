@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/08 17:47:40 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/10 11:39:35 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
     
     //sort(&stack_a, &stack_b);
     radix_sort(&stack_a, &stack_b);
-    print_list(stack_a);
-
+    //print_list(stack_a);
+    //free(stack_a);
     return 0;
 }
