@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/12 22:30:54 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:44:31 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
     stack_b = NULL;
     free(arr);
     is_stack_sorted(stack_a);
-    if (stack_len(stack_a) == 3)
+    if (stack_len(stack_a) <= 3)
     {
         printf("THIS IS A 3 SORT : \n");
         three_sort(&stack_a);
