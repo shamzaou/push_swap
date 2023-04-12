@@ -1,6 +1,6 @@
 NAME = push_swap
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
@@ -14,6 +14,7 @@ SRC = $(SRC_DIR)/algorithm.c \
 		$(SRC_DIR)/parsing.c \
 		$(SRC_DIR)/toolbox.c \
 		$(SRC_DIR)/toolbox2.c \
+		$(SRC_DIR)/toolbox3.c \
 		$(ACTION_DIR)/pa_pb.c \
 		$(ACTION_DIR)/ra_rb_rr.c \
 		$(ACTION_DIR)/rra_rrb_rrr.c \

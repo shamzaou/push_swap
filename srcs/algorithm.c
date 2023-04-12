@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/08 16:27:07 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:14:24 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,48 +39,50 @@ void    three_sort(t_stack **stack_a)
         rra(stack_a);
 }
 
-void    insert_sorted(t_stack **stack_a, t_stack **stack_b, int value, int n)
+void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value)
 {
-    t_stack *tmp = *stack_a;
     int counter = 0;
+    int n = stack_len(*stack_a);
 
-    if (value > (*stack_a)->next->next->data)
-        {
-            pa(stack_a, stack_b);
-            ra(stack_a);        
-        }
-    else 
+    while (counter < n && (*stack_a)->data < value)
     {
-        while (tmp && tmp->data < value && n--)
-        {
-            ra(stack_a);
-            tmp = *stack_a;
-            counter++;
-        }
-        
-        pa(stack_a, stack_b);
-        while (counter--)
-            rra(stack_a);
+        ra(stack_a);
+        counter++;
+    }
+    pa(stack_a, stack_b);
+    while (counter > 0)
+    {
+        rra(stack_a);
+        counter--;
     }
 }
 
-void    five_sort(t_stack **stack_a)
+
+void five_sort(t_stack **stack_a)
 {
     t_stack *stack_b = NULL;
-    int first;
-    int second;
+    int stack_len_a = stack_len(*stack_a);
     
-    pb(stack_a, &stack_b);
-    pb(stack_a, &stack_b);
+    if (stack_len_a < 4 || stack_len_a > 6)
+        return;
 
+    if (stack_len_a >= 4)
+        pb(stack_a, &stack_b);
+    if (stack_len_a >= 5)
+        pb(stack_a, &stack_b);
+    if (stack_len_a == 6)
+        pb(stack_a, &stack_b);
+    
     three_sort(stack_a);
     
-    first = stack_b->data;
-    second = stack_b->next->data;
-
-    insert_sorted(stack_a, &stack_b, first, 3);
-    insert_sorted(stack_a, &stack_b, second, 4);
+    while (stack_b)
+    {
+        int value = stack_b->data;
+        insert_sorted(stack_a, &stack_b, value);
+    }
 }
+
+
 
 int stack_len(t_stack *stack)
 {

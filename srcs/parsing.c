@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/10 15:18:25 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:20:53 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,9 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     if (argc < 2)
         exit(1);
 
-    if (argc == 2)
-    {
-        if(argv[1][0] == '"')    
-    }
+    // add condiition
 
-    for (i = 2; i < argc; i++)
+    for (i = 1; i < argc; i++)
     {
         if (is_empty_or_whitespace(argv[i]))
             ft_error();

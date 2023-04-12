@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/08 16:18:10 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:27:57 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ int is_only_spaces(const char *str);
 int is_empty_or_whitespace(const char *str);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+void    is_stack_sorted(t_stack *stack);
 
 void    three_sort(t_stack **stack_a);
 void    five_sort(t_stack **stack_a);
-void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value, int n);
+void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value);
 
 t_stack *find_largest_node(t_stack *head, int *pos_ptr);
 int     stack_len(t_stack *stack);

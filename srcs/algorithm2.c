@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:44:33 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/08 17:44:34 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:21:28 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,3 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	ft_swap(int *a, int *b)
-{
-	int	temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}

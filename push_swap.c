@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/10 11:46:22 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:30:54 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,31 @@ int main(int argc, char **argv)
 int main(int argc, char **argv)
 {
     int *arr;
-    
+    t_stack *stack_a;
+    t_stack *stack_b;
     
     if (!parse_args(argc, argv, &arr))
     {
         ft_error();
         return (1);
     }
-
-    t_stack *stack_a = create_stack(argc - 1, arr);
+    stack_a = create_stack(argc - 1, arr);
+    stack_b = NULL;
     free(arr);
-    
-    t_stack *stack_b = NULL;
-    
-    //sort(&stack_a, &stack_b);
-    radix_sort(&stack_a, &stack_b);
+    is_stack_sorted(stack_a);
+    if (stack_len(stack_a) == 3)
+    {
+        printf("THIS IS A 3 SORT : \n");
+        three_sort(&stack_a);
+    }
+    else if (stack_len(stack_a) <= 6)
+        {
+            printf("THIS IS A 5 SORT : \n");
+            five_sort(&stack_a);
+        }
+    else
+        radix_sort(&stack_a, &stack_b);
     print_list(stack_a);
-    print_list(stack_b);
+
     return 0;
 }
