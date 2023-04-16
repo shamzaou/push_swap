@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/16 22:27:14 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/16 23:17:04 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,17 @@ void    three_sort(t_stack **stack_a)
         rra(stack_a);
 }
 
-void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value)
+void insert_sorted(t_stack **stack_a, t_stack **stack_b)
 {
     int pos;
     
-    pos = find_pos(*stack_a, value);
+    pos = find_pos(*stack_a, (*stack_b)->data);
     
     to_the_top(stack_a, pos - 1);
 
     pa(stack_a, stack_b);
     print_list(*stack_a);
 }
-
-
 
 void five_sort(t_stack **stack_a)
 {
@@ -79,10 +77,9 @@ void five_sort(t_stack **stack_a)
     three_sort(stack_a);
     
     while (stack_b)
-    {
-        int value = stack_b->data;
-        insert_sorted(stack_a, &stack_b, value);
-    }
+        insert_sorted(stack_a, &stack_b);
+        
+    to_the_top(stack_a, find_smallest_node_position(*stack_a) - 1);
 }
 
 
@@ -181,7 +178,6 @@ void    to_the_top(t_stack **stack, int position)
     if (!stack || !(*stack) || position >= len)
         return;
     
-
     if (position > len / 2)
     {
         i = len - position + 1;
