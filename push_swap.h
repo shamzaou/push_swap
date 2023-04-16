@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/13 17:23:03 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/16 21:39:26 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value);
 t_stack *find_largest_node(t_stack *head, int *pos_ptr);
 int     stack_len(t_stack *stack);
 int     ra_or_rra(t_stack *stack, int position);
-int    to_the_top(t_stack **stack);
+void    to_the_top(t_stack **stack, int position);
 void    sort(t_stack **stack_a, t_stack **stack_b);
 int     find_smallest_node_position(t_stack *head);
 int     find_largest_node_position(t_stack *head);

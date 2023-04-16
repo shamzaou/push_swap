@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/13 02:17:54 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/16 22:27:40 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,20 @@ int main(int argc, char **argv)
     stack_a = create_stack(argc - 1, arr);
     stack_b = NULL;
     free(arr);
+    /*
+    pb(&stack_a, &stack_b);
+    pb(&stack_a, &stack_b);
+    three_sort(&stack_a);
+    int pos = find_pos(stack_a, stack_b->data);
+    printf("pos value : %d\n", pos);
+    to_the_top(&stack_a, pos - 1);
+    pa(&stack_a, &stack_b);
+    pos = find_pos(stack_a, stack_b->data);
+    printf("pos value : %d\n", pos);
+    to_the_top(&stack_a, pos - 1);
+    pa(&stack_a, &stack_b);
+    print_list(stack_a);
+    print_list(stack_b);*/
     is_stack_sorted(stack_a);
     if (stack_len(stack_a) <= 3)
     {
