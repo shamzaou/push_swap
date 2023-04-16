@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/12 22:14:24 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/16 07:02:57 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+void    two_sort(t_stack **stack)
+{
+    if (*stack && (*stack)->next != NULL)
+    {
+        if ((*stack)->data > (*stack)->next->data)
+            sa(stack);
+    }
+}
 void    three_sort(t_stack **stack_a)
 {
     int top;
@@ -42,20 +50,34 @@ void    three_sort(t_stack **stack_a)
 void insert_sorted(t_stack **stack_a, t_stack **stack_b, int value)
 {
     int counter = 0;
-    int n = stack_len(*stack_a);
+    int pos;
+    int len = stack_len(*stack_a);
+    printf("len value : %d\n", len);
+    
+    pos = find_pos(*stack_a, value);
+    printf("pos value : %d\n", pos);
+    if (pos <= (len / 2 + 1))
+    {
+        while (--pos)
+        {
+            ra(stack_a);
+            counter++;
+        }
+    }
+    else
+    {
+        pos = len - pos;
+        while (--pos >= 0)
+        {
+            rra(stack_a);
+            counter++;
+        }
+    }
 
-    while (counter < n && (*stack_a)->data < value)
-    {
-        ra(stack_a);
-        counter++;
-    }
     pa(stack_a, stack_b);
-    while (counter > 0)
-    {
-        rra(stack_a);
-        counter--;
-    }
+    print_list(*stack_a);
 }
+
 
 
 void five_sort(t_stack **stack_a)

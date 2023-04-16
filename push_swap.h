@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/12 22:27:57 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:23:03 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int is_empty_or_whitespace(const char *str);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 void    is_stack_sorted(t_stack *stack);
+void    two_sort(t_stack **stack);
+int     find_pos(t_stack *stack, int data);
 
 void    three_sort(t_stack **stack_a);
 void    five_sort(t_stack **stack_a);
