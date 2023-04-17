@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/16 23:17:04 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:52:57 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void insert_sorted(t_stack **stack_a, t_stack **stack_b)
     int pos;
     
     pos = find_pos(*stack_a, (*stack_b)->data);
-    
-    to_the_top(stack_a, pos - 1);
+    if (!((*stack_b)->data < (*stack_a)->data && (*stack_b)->data > lst_last(*stack_a)))
+        to_the_top(stack_a, pos - 1);
 
     pa(stack_a, stack_b);
     print_list(*stack_a);
@@ -174,7 +174,7 @@ void    to_the_top(t_stack **stack, int position)
     int len;
     int i;
 
-    len = stack_len(*stack);
+     len = stack_len(*stack);
     if (!stack || !(*stack) || position >= len)
         return;
     

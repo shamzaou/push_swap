@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 22:19:00 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/16 03:02:15 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/17 03:34:29 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,24 @@ int find_pos(t_stack *stack, int data)
     int pos;
 
     pos = 0;
+    if(data > stack->data && data < lst_last(stack))
+        return (2);
     while (stack && stack->next)
     {
         pos++;
+        
         if (data > stack->data && data <= stack->next->data)
             break;
         stack = stack->next;
     }
     return (pos + 1);
+}
+
+int lst_last(t_stack *head)
+{
+    if (!head)
+        return(0);
+    while (head && head->next)
+        head = head->next;
+    return (head->data);
 }
