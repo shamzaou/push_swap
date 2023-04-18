@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/18 09:13:47 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/18 09:21:39 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void five_sort(t_stack **stack_a)
             
         }
         
-    //to_the_top(stack_a, find_smallest_node_position(*stack_a) - 1);
+    to_the_top(stack_a, find_smallest_node_position(*stack_a) - 1);
 }
 
 
@@ -190,8 +190,8 @@ void    to_the_top(t_stack **stack, int position)
         rra(stack);
     else if (position > len / 2)
     {
-        i = len - position - 1;
-        while (--i > 0)
+        i = len - position;
+        while (i-- > 0)
             rra(stack);
     }
     else if(position == len / 2)
