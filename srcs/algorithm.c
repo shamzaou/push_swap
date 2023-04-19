@@ -6,11 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/19 09:49:42 by shamzaou         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/18 09:21:39 by shamzaou         ###   ########.fr       */
->>>>>>> 526c5936c8159bbf34f92d975f30ce09d6ceb9fb
+/*   Updated: 2023/04/19 09:56:35 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +50,12 @@ void    three_sort(t_stack **stack_a)
 void insert_sorted(t_stack **stack_a, t_stack **stack_b)
 {
     int pos;
-
+    
     pos = find_pos(*stack_a, (*stack_b)->data);
-    to_the_top(stack_a, pos);
+    if (!((*stack_b)->data < (*stack_a)->data && (*stack_b)->data > lst_last(*stack_a)))
+        to_the_top(stack_a, pos - 1);
+
     pa(stack_a, stack_b);
-    print_list(*stack_a);
-    printf("smallest : %d\n", find_smallest_node_position(*stack_a));
-    to_the_top(stack_a, find_smallest_node_position(*stack_a));
-    printf("after to the top : ");
     print_list(*stack_a);
 }
 
@@ -114,18 +108,9 @@ void five_sort(t_stack **stack_a)
     printf("remaining stack_b : ");
     print_list(stack_b);
     while (stack_b)
-<<<<<<< HEAD
     {
         pa(stack_a, &stack_b);
     }
-=======
-        {
-            insert_sorted(stack_a, &stack_b);
-            
-        }
-        
-    to_the_top(stack_a, find_smallest_node_position(*stack_a) - 1);
->>>>>>> 526c5936c8159bbf34f92d975f30ce09d6ceb9fb
 }
 
 
@@ -143,7 +128,6 @@ int stack_len(t_stack *stack)
 
 int find_smallest_node_position(t_stack *head)
 {
-<<<<<<< HEAD
     if (head == NULL)
         return -1;
 
@@ -161,25 +145,6 @@ int find_smallest_node_position(t_stack *head)
             smallest_position = position;
         }
         position++;
-=======
-    int pos = 0;
-    int smallest_pos = head->data;
-
-    if (head == NULL) {
-        return 0;
-    }
-
-    t_stack* current = head;
-    t_stack* smallest_node = head;
-
-    while (current) {
-        pos++;
-        if (current->data < smallest_node->data)
-        {
-            smallest_node = current;
-            smallest_pos = pos;
-        }
->>>>>>> 526c5936c8159bbf34f92d975f30ce09d6ceb9fb
         current = current->next;
     }
     
@@ -249,21 +214,15 @@ void    to_the_top(t_stack **stack, int position)
     int i;
 
      len = stack_len(*stack);
-    if (!stack || !(*stack))
+    if (!stack || !(*stack) || position >= len)
         return;
     
-    if (position == 0)
-        return;
-    else if (len == position)
-        rra(stack);
-    else if (position > len / 2)
+    if (position > len / 2)
     {
-        i = len - position;
-        while (i-- > 0)
+        i = len - position + 1;
+        while (--i)
             rra(stack);
     }
-    else if(position == len / 2)
-        ra(stack);
     else
     {
         while (position > 0)
