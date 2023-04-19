@@ -6,11 +6,12 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/11 18:20:53 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/20 01:03:13 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdbool.h>
 
 /* is_sign():
 *   Returns 1 if the element is a sign.
@@ -89,20 +90,15 @@ int parse_args(int argc, char **argv, int **arr_ptr)
 
     if (argc < 2)
         exit(1);
-
-    // add condiition
-
     for (i = 1; i < argc; i++)
     {
         if (is_empty_or_whitespace(argv[i]))
             ft_error();
         total_numbers += count_numbers(argv[i]);
     }
-
     arr = (int *)malloc(sizeof(int) * total_numbers);
     if (!arr)
         return (0);
-
     j = 0;
     for (i = 1; i < argc; i++)
     {
@@ -115,14 +111,9 @@ int parse_args(int argc, char **argv, int **arr_ptr)
             arr[j++] = ft_atoi(tokens[k]);
             k++;
         }
-
-        // Free the memory allocated for the tokens
-        int l = 0;
-        while (tokens[l] != NULL)
-        {
+        int l = -1;
+        while (tokens[++l] != NULL)
             free(tokens[l]);
-            l++;
-        }
         free(tokens);
     }
 
@@ -152,25 +143,36 @@ int is_only_spaces(const char *str)
 }
 
 
-int count_numbers(const char *str)
+int count_numbers(const char *s)
 {
     int count = 0;
-    char **tokens = ft_split(str, ' ');
+    bool in_quotes = false;
+    bool last_was_digit = false;
 
-    int i = 0;
-    while (tokens[i] != NULL)
+    while (*s)
     {
+        if (*s == '\"')
+            in_quotes = !in_quotes;
+        else if (isspace((unsigned char)*s) && !in_quotes)
+        {
+            if (last_was_digit)
+                count++;
+            last_was_digit = false;
+        }
+        else if (is_int((char *)s))
+            last_was_digit = true;
+        else
+            ft_error();
+
+        s++;
+    }
+
+    if (last_was_digit)
         count++;
-        i++;
-    }
-    // Free the memory allocated for the tokens
-    int j = 0;
-    while (tokens[j] != NULL)
-    {
-        free(tokens[j]);
-        j++;
-    }
-    free(tokens);
+
+    if (in_quotes)
+        ft_error();
+
     return count;
 }
 

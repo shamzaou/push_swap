@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/19 09:56:35 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:58:02 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,20 @@ void five_sort(t_stack **stack_a)
 {
     t_stack *stack_b = NULL;
     int stack_len_a = stack_len(*stack_a);
-    printf("stack len : %d\n", stack_len_a);
+
     if (stack_len_a < 4 || stack_len_a > 6)
         return;
 
     // Push the smallest element(s) to stack_b
     int elements_to_move = stack_len_a - 3;
-    printf("elements to move : %d\n", elements_to_move);
-    print_list(*stack_a);
+
     while (elements_to_move > 0)
     {
         stack_len_a = stack_len(*stack_a);
         int min_pos = find_smallest_node_position(*stack_a);
-        printf("smallest pos : %d\n", min_pos);
+
         int direction = ra_or_rra(*stack_a, min_pos);
-        printf("direction : %d\n", direction);
+
         if (direction == 1)
         {
             min_pos = min_pos - 1;
@@ -91,22 +90,17 @@ void five_sort(t_stack **stack_a)
                 rra(stack_a);
         }
         pb(stack_a, &stack_b);
-        printf("stack_a : ");
-        print_list(*stack_a);
-        printf("stack_b : ");
-        print_list(stack_b);
+
         elements_to_move--;
     }
 
 
     
     three_sort(stack_a);
-    printf("stack_a : ");
-    print_list(*stack_a);
+
     
     // Move elements back from stack_b to stack_a
-    printf("remaining stack_b : ");
-    print_list(stack_b);
+
     while (stack_b)
     {
         pa(stack_a, &stack_b);
