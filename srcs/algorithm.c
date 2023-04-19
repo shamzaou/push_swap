@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/17 02:52:57 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:49:42 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,54 @@ void five_sort(t_stack **stack_a)
 {
     t_stack *stack_b = NULL;
     int stack_len_a = stack_len(*stack_a);
-    
+    printf("stack len : %d\n", stack_len_a);
     if (stack_len_a < 4 || stack_len_a > 6)
         return;
 
-    if (stack_len_a >= 4)
+    // Push the smallest element(s) to stack_b
+    int elements_to_move = stack_len_a - 3;
+    printf("elements to move : %d\n", elements_to_move);
+    print_list(*stack_a);
+    while (elements_to_move > 0)
+    {
+        stack_len_a = stack_len(*stack_a);
+        int min_pos = find_smallest_node_position(*stack_a);
+        printf("smallest pos : %d\n", min_pos);
+        int direction = ra_or_rra(*stack_a, min_pos);
+        printf("direction : %d\n", direction);
+        if (direction == 1)
+        {
+            min_pos = min_pos - 1;
+            while (min_pos-- > 0)
+                ra(stack_a);
+        }
+        else
+        {
+            min_pos = stack_len_a - min_pos + 1;
+            while (min_pos-- > 0)
+                rra(stack_a);
+        }
         pb(stack_a, &stack_b);
-    if (stack_len_a >= 5)
-        pb(stack_a, &stack_b);
-    if (stack_len_a == 6)
-        pb(stack_a, &stack_b);
+        printf("stack_a : ");
+        print_list(*stack_a);
+        printf("stack_b : ");
+        print_list(stack_b);
+        elements_to_move--;
+    }
+
+
     
     three_sort(stack_a);
+    printf("stack_a : ");
+    print_list(*stack_a);
     
+    // Move elements back from stack_b to stack_a
+    printf("remaining stack_b : ");
+    print_list(stack_b);
     while (stack_b)
-        insert_sorted(stack_a, &stack_b);
-        
-    to_the_top(stack_a, find_smallest_node_position(*stack_a) - 1);
+    {
+        pa(stack_a, &stack_b);
+    }
 }
 
 
@@ -97,27 +128,29 @@ int stack_len(t_stack *stack)
 
 int find_smallest_node_position(t_stack *head)
 {
-    int pos = 1;
-    int smallest_pos = 1;
+    if (head == NULL)
+        return -1;
 
-    if (head == NULL) {
-        return 0;
-    }
-
-    t_stack* current = head;
-    t_stack* smallest_node = head;
-
-    while (current != NULL) {
-        if (current->data < smallest_node->data) {
-            smallest_node = current;
-            smallest_pos = pos;
+    t_stack *current = head;
+    int smallest = current->data;
+    int position = 1;
+    int smallest_position = 0;
+    
+    while (current != NULL)
+    {
+        
+        if (current->data < smallest)
+        {
+            smallest = current->data;
+            smallest_position = position;
         }
-        pos++;
+        position++;
         current = current->next;
     }
-
-    return smallest_pos;
+    
+    return smallest_position;
 }
+
 
 int find_largest_node_position(t_stack *head)
 {
@@ -146,14 +179,20 @@ int find_largest_node_position(t_stack *head)
 
 int ra_or_rra(t_stack *stack, int position)
 {
-    int len;
+    int stack_size = stack_len(stack);
     
-    len = stack_len(stack);
-    if (position > len / 2)
-        return (0);
+    if (position <= stack_size / 2)
+    {
+        // Use ra to reach the position
+        return 1;
+    }
     else
-        return (1);
+    {
+        // Use rra to reach the position
+        return -1;
+    }
 }
+
 
 int is_sorted(t_stack *stack)
 {
