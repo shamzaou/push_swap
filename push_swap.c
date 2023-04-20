@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/20 05:45:05 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/20 05:46:30 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(int argc, char **argv)
 
 void	sort(t_stack **stack_a)
 {
-	t_stack     *stack_b;
-	int         len_stack_a;
+	t_stack	*stack_b;
+	int		len_stack_a;
 
 	stack_b = NULL;
 	len_stack_a = stack_len(*stack_a);
