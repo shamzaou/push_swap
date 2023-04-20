@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:44:33 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/12 22:21:28 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/20 06:09:27 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,74 @@ int	get_stack_size(t_stack *stack)
 	return (size);
 }
 
-void	radix_sort(t_stack **stack_a, t_stack **stack_b)
+// Helper function to convert the number to its signed magnitude representation
+int to_signed_magnitude(int num)
 {
-	int	bits;
-	int	index1;
-	int	stack_size;
-
-	bits = get_max_bits(*stack_a);
-	stack_size = get_stack_size(*stack_a);
-	for (index1 = 0; index1 < bits; index1++)
-	{
-		for (int index2 = 0; index2 < stack_size; index2++)
-		{
-			if ((*stack_a)->data & (1 << index1))
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
-		}
-		while (*stack_b)
-			pa(stack_a, stack_b);
-	}
+    if (num < 0)
+        return ((-num) << 1) | 1;
+    else
+        return num << 1;
 }
+
+// Helper function to convert the number to its two's complement representation
+unsigned int to_twos_complement(int num)
+{
+    return (unsigned int)num;
+}
+
+int find_min_value(t_stack *stack)
+{
+    int min_value = INT_MAX;
+    while (stack)
+    {
+        if (stack->data < min_value)
+            min_value = stack->data;
+        stack = stack->next;
+    }
+    return min_value;
+}
+
+void add_offset_to_stack(t_stack **stack, int offset)
+{
+    t_stack *current = *stack;
+    while (current)
+    {
+        current->data += offset;
+        current = current->next;
+    }
+}
+
+void radix_sort(t_stack **stack_a, t_stack **stack_b)
+{
+    int bits;
+    int index1;
+    int stack_size;
+    int min_value = find_min_value(*stack_a);
+    int offset = abs(min_value);
+
+    add_offset_to_stack(stack_a, offset);
+    bits = get_max_bits(*stack_a);
+    stack_size = get_stack_size(*stack_a);
+
+    index1 = 0;
+    while (index1 < bits)
+    {
+        int index2 = 0;
+        while (index2 < stack_size)
+        {
+            if ((*stack_a)->data & (1 << index1))
+                ra(stack_a);
+            else
+                pb(stack_a, stack_b);
+            index2++;
+        }
+        while (*stack_b)
+            pa(stack_a, stack_b);
+        index1++;
+    }
+
+    add_offset_to_stack(stack_a, -offset);
+}
+
+
 

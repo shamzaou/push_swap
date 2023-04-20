@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/20 05:46:30 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/20 06:48:28 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	sort(t_stack **stack_a)
 	}
 	else if (len_stack_a <= 6)
 	{
-		printf("THIS IS A 5 SORT : \n");
+		// printf("THIS IS A 5 SORT : \n");
 		five_sort(stack_a);
 	}
 	else
