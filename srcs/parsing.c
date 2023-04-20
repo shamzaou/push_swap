@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/20 05:26:30 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/20 05:42:30 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,6 @@ int count_numbers(const char *s)
 
         s++;
     }
-
     if (last_was_digit)
         count++;
 
