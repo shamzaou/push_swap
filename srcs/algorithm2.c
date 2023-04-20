@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:44:33 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/20 06:09:27 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/20 07:15:49 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,19 @@ void add_offset_to_stack(t_stack **stack, int offset)
     }
 }
 
+unsigned int get_unsigned_data(int data, int offset)
+{
+    return (unsigned int)(data + offset);
+}
+
 void radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
     int bits;
     int index1;
     int stack_size;
     int min_value = find_min_value(*stack_a);
-    int offset = abs(min_value);
+    unsigned int offset = (unsigned int)abs(min_value);
 
-    add_offset_to_stack(stack_a, offset);
     bits = get_max_bits(*stack_a);
     stack_size = get_stack_size(*stack_a);
 
@@ -123,7 +127,8 @@ void radix_sort(t_stack **stack_a, t_stack **stack_b)
         int index2 = 0;
         while (index2 < stack_size)
         {
-            if ((*stack_a)->data & (1 << index1))
+            unsigned int unsigned_data = get_unsigned_data((*stack_a)->data, offset);
+            if (unsigned_data & (1u << index1))
                 ra(stack_a);
             else
                 pb(stack_a, stack_b);
@@ -133,9 +138,8 @@ void radix_sort(t_stack **stack_a, t_stack **stack_b)
             pa(stack_a, stack_b);
         index1++;
     }
-
-    add_offset_to_stack(stack_a, -offset);
 }
+
 
 
 
