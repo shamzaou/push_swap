@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/20 01:03:13 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/20 05:26:30 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int is_int(char *str)
         i++;
     while (str[i] && ft_isdigit(str[i]))
         i++;
-    if (str[i] && !ft_isdigit(str[i]))
+    if (str[i] && !ft_isdigit(str[i]) && !isspace(str[i]))
         return (0);
     return (1);
 }
