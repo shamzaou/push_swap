@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:40:59 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/24 11:19:30 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:11:40 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void    ft_error(void)
 {
-    write(STDERR_FILENO, "Error\n", 6);
-    exit(1);
+    write(2, "Error\n", 6);
+    exit(11);
 }
 
 void    ft_putstr(char *str)

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/20 05:42:30 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:28:06 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ int is_sign(char *str)
         return (0);
 }
 
+int is_int2(char *str)
+{
+    int i;
+
+    i = 0;
+    if (is_sign(&str[i]) && str[i + 1] != '\0')
+        i++;
+    while (str[i] && ft_isdigit(str[i]))
+        i++;
+    if(str[i] != '\0')
+        return(0);
+    if (str[i] && !ft_isdigit(str[i]) && !isspace(str[i]))
+        return (0);
+    return (1);
+}
 int is_int(char *str)
 {
     int i;
@@ -106,7 +121,7 @@ int parse_args(int argc, char **argv, int **arr_ptr)
         int k = 0;
         while (tokens[k] != NULL)
         {
-            if (!is_int(tokens[k]))
+            if (!is_int2(tokens[k]))
                 ft_error();
             arr[j++] = ft_atoi(tokens[k]);
             k++;

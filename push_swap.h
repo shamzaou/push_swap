@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/24 10:52:44 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:27:14 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,5 @@ void				insertion_sort_arr(int *array, int args);
 int					get_max_bits(t_stack *stack);
 int					get_stack_size(t_stack *stack);
 void				ft_swap(int *a, int *b);
-
+int					is_int2(char *str);
 #endif

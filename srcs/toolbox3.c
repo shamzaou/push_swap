@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   toolbox3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 22:19:00 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/18 08:49:24 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:10:14 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    is_stack_sorted(t_stack *stack)
             return;
         current = current->next;
     }
-    exit(1);
+    exit(12);
 }
 
 
