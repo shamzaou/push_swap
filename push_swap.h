@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/20 05:40:15 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:52:44 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 {
 	struct s_stack	*prev;
 	int				data;
+	int				index;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -68,6 +69,8 @@ void				is_stack_sorted(t_stack *stack);
 void				two_sort(t_stack **stack);
 int					find_pos(t_stack *stack, int data);
 int					lst_last(t_stack *head);
+t_stack 			*get_next_min_value(t_stack *stack, long last_min_value);
+void    			assign_indexes(t_stack **stack);
 
 void				three_sort(t_stack **stack_a);
 void				five_sort(t_stack **stack_a);
