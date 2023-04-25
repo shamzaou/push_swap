@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/24 11:12:57 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:23:16 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	int		count;
 	t_stack	*stack_a;
 
+	stack_a = NULL;
 	count = parse_args(argc, argv, &arr);
 	if (count == 0)
 		ft_error();
@@ -48,6 +49,7 @@ int	main(int argc, char **argv)
 	is_stack_sorted(stack_a);
 	sort(&stack_a);
 	//print_list(stack_a);
+	free_stack(&stack_a);
 	return (0);
 }
 
@@ -62,7 +64,7 @@ void	sort(t_stack **stack_a)
 		two_sort(stack_a);
 	else if (len_stack_a == 3)
 	{
-		printf("THIS IS A 3 SORT : \n");
+		//printf("THIS IS A 3 SORT : \n");
 		three_sort(stack_a);
 	}
 	else if (len_stack_a <= 6)
@@ -72,4 +74,16 @@ void	sort(t_stack **stack_a)
 	}
 	else
 		radix_sort(stack_a, &stack_b);
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	while (*stack)
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
+	}
 }

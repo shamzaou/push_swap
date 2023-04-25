@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/24 14:27:14 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:22:46 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 }					t_stack;
+
+typedef struct s_error_data
+{
+    int *arr;
+    char **tokens;
+}              t_error_data;
 
 # ifndef STDERR_FILENO
 #  define STDERR_FILENO 2
@@ -71,6 +77,10 @@ int					find_pos(t_stack *stack, int data);
 int					lst_last(t_stack *head);
 t_stack 			*get_next_min_value(t_stack *stack, long last_min_value);
 void    			assign_indexes(t_stack **stack);
+void	free_stack(t_stack **stack);
+void    free_tokens(char **tokens);
+void ft_error_handler(t_error_data *error_data);
+
 
 void				three_sort(t_stack **stack_a);
 void				five_sort(t_stack **stack_a);

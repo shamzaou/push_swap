@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   toolbox3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 22:19:00 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/24 14:10:14 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:20:38 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,17 @@ int find_pos(t_stack *stack, int data)
     if (pos == len)
         return (0);
     return (pos);
+}
+
+void    free_tokens(char **tokens)
+{
+    int i;
+
+    i = 0;
+    while (tokens[i])
+    {
+        free(tokens[i]);
+        i++;
+    }
+    free(tokens);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/24 14:28:06 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:43:46 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     int j;
     char **tokens;
 
+    t_error_data error_data = {0};
+    tokens = NULL;
     if (argc < 2)
         exit(1);
     for (i = 1; i < argc; i++)
@@ -114,22 +116,26 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     arr = (int *)malloc(sizeof(int) * total_numbers);
     if (!arr)
         return (0);
+    error_data.arr = arr;
+    error_data.tokens = tokens;
     j = 0;
     for (i = 1; i < argc; i++)
     {
         tokens = ft_split(argv[i], ' ');
+        error_data.tokens = tokens;
         int k = 0;
         while (tokens[k] != NULL)
         {
             if (!is_int2(tokens[k]))
-                ft_error();
+                {
+                    error_data.arr = arr;
+                error_data.tokens = tokens;
+                    ft_error_handler(&error_data);
+                }
             arr[j++] = ft_atoi(tokens[k]);
             k++;
         }
-        int l = -1;
-        while (tokens[++l] != NULL)
-            free(tokens[l]);
-        free(tokens);
+        ft_error_handler(&error_data);
     }
 
     for (i = 0; i < total_numbers; i++)
@@ -137,7 +143,9 @@ int parse_args(int argc, char **argv, int **arr_ptr)
         for (j = i + 1; j < total_numbers; j++)
         {
             if (arr[i] == arr[j])
-                ft_error();
+            {
+                ft_error_handler(&error_data);
+            }
         }
     }
 
