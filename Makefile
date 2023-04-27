@@ -7,12 +7,13 @@ CC = gcc
 SRC_DIR = srcs
 ACTION_DIR = actions
 
-SRC = $(SRC_DIR)/algorithm.c \
-		$(SRC_DIR)/algorithm2.c \
+SRC = $(SRC_DIR)/sort.c \
+		$(SRC_DIR)/error_handling.c \
 		$(SRC_DIR)/build_stack.c \
 		$(SRC_DIR)/ft_split.c \
 		$(SRC_DIR)/parsing.c \
-		$(SRC_DIR)/toolbox.c \
+		$(SRC_DIR)/toolbox0.c \
+		$(SRC_DIR)/toolbox1.c \
 		$(SRC_DIR)/toolbox2.c \
 		$(SRC_DIR)/toolbox3.c \
 		$(ACTION_DIR)/pa_pb.c \

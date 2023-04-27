@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   toolbox1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 13:56:49 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:27:19 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	move_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
+void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_len_a;
 	int	min_pos;
@@ -84,4 +84,20 @@ int	ra_or_rra(t_stack *stack, int position)
 		return (1);
 	else
 		return (-1);
+}
+
+int	is_int2(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (is_sign(&str[i]) && str[i + 1] != '\0')
+		i++;
+	while (str[i] && ft_isdigit(str[i]))
+		i++;
+	if (str[i] != '\0')
+		return (0);
+	if (str[i] && !ft_isdigit(str[i]) && !isspace(str[i]))
+		return (0);
+	return (1);
 }

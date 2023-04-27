@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:44:33 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 13:57:13 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:18:12 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	five_sort(t_stack **stack_a)
 	elements_to_move = stack_len_a - 3;
 	while (elements_to_move > 0)
 	{
-		move_smallest_to_b(stack_a, &stack_b);
+		push_smallest_to_b(stack_a, &stack_b);
 		elements_to_move--;
 	}
 	three_sort(stack_a);

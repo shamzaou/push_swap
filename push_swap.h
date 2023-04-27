@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 14:13:00 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:19:32 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ void				fill_array(int argc, char **argv, int *arr,
 void				check_duplicates(int *arr, int total_numbers,
 						t_error_data *error_data);
 int					find_smallest_node_position(t_stack *head);
+void				push_smallest_to_b(t_stack **stack_a, t_stack **stack_b);
 
 #endif
