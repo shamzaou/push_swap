@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:15:23 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:00:14 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*void	print_list(t_stack *head)
-{
-	t_stack	*current;
-
-	current = head;
-	while (current != NULL)
-	{
-		printf("%d ", current->data);
-		current = current->next;
-	}
-	printf("\n");
-}*/
 
 int	main(int argc, char **argv)
 {
@@ -73,3 +60,16 @@ void	free_stack(t_stack **stack)
 		free(tmp);
 	}
 }
+
+/*void	print_list(t_stack *head)
+{
+	t_stack	*current;
+
+	current = head;
+	while (current != NULL)
+	{
+		printf("%d ", current->data);
+		current = current->next;
+	}
+	printf("\n");
+}*/

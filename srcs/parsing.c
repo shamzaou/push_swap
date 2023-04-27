@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:19:37 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:45:33 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,58 +67,82 @@ int is_int(char *str)
 */
 int parse_args(int argc, char **argv, int **arr_ptr)
 {
-    int total_numbers = 0;
+    int total_numbers;
     int *arr;
-    int i;
-    int j;
-    char **tokens;
     t_error_data error_data = {0};
 
-    tokens = NULL;
-    if (argc < 2)
-        exit(1);
-    for (i = 1; i < argc; i++)
-    {
-        if (is_empty_or_whitespace(argv[i]))
-            ft_error();
-        total_numbers += count_numbers(argv[i]);
-    }
+    total_numbers = parse_and_count_args(argc, argv);
     arr = (int *)malloc(sizeof(int) * total_numbers);
     error_data.arr = arr;
     if (!arr)
         return (0);
-    j = 0;
-    for (i = 1; i < argc; i++)
+    fill_array(argc, argv, arr, &error_data);
+    check_duplicates(arr, total_numbers, &error_data);
+    *arr_ptr = arr;
+    return total_numbers;
+}
+
+int parse_and_count_args(int argc, char **argv)
+{
+    int total_numbers = 0;
+    int i = 1;
+
+    if (argc < 2)
+        exit(1);
+    while (i < argc)
+    {
+        if (is_empty_or_whitespace(argv[i]))
+            ft_error();
+        total_numbers += count_numbers(argv[i]);
+        i++;
+    }
+    return total_numbers;
+}
+
+void fill_array(int argc, char **argv, int *arr, t_error_data *error_data)
+{
+    int i = 1, j = 0;
+    char **tokens;
+
+    while (i < argc)
     {
         tokens = ft_split(argv[i], ' ');
-        error_data.tokens = tokens;
+        error_data->tokens = tokens;
         int k = 0;
         while (tokens[k] != NULL)
         {
             if (!is_int2(tokens[k]))
-                ft_error_handler(&error_data);
-            arr[j++] = ft_atoi(tokens[k], &error_data);
+                ft_error_handler(error_data);
+            arr[j++] = ft_atoi(tokens[k], error_data);
             k++;
         }
         int l = -1;
         while (tokens[++l] != NULL)
             free(tokens[l]);
         free(tokens);
+        i++;
     }
-    for (i = 0; i < total_numbers; i++)
+}
+
+void check_duplicates(int *arr, int total_numbers, t_error_data *error_data)
+{
+    int i = 0, j;
+
+    while (i < total_numbers)
     {
-        for (j = i + 1; j < total_numbers; j++)
+        j = i + 1;
+        while (j < total_numbers)
         {
             if (arr[i] == arr[j])
             {
-                error_data.arr = arr;
-                error_data.tokens = NULL;
-                ft_error_handler(&error_data);
+                error_data->arr = arr;
+                error_data->tokens = NULL;
+                ft_error_handler(error_data);
             }
+            j++;
         }
+        i++;
     }
-    *arr_ptr = arr;
-    return total_numbers;
 }
 
 // Add a new helper function to check if a string contains only spaces

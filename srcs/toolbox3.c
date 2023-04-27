@@ -21,46 +21,45 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-void    is_stack_sorted(t_stack **stack)
+void	is_stack_sorted(t_stack **stack)
 {
-    t_stack *current;
+	t_stack	*current;
 
-    current = *stack;
-    while (current->next != NULL)
-    {
-        if (current->data > current->next->data)
-            return;
-        current = current->next;
-    }
-    free_stack(stack);
-    exit(12);
+	current = *stack;
+	while (current->next != NULL)
+	{
+		if (current->data > current->next->data)
+			return ;
+		current = current->next;
+	}
+	free_stack(stack);
+	exit(12);
 }
 
-int lst_last(t_stack *head)
+int	lst_last(t_stack *head)
 {
-    if (!head)
-        return(0);
-    while (head && head->next)
-        head = head->next;
-    return (head->data);
+	if (!head)
+		return (0);
+	while (head && head->next)
+		head = head->next;
+	return (head->data);
 }
 
-int find_pos(t_stack *stack, int data)
+int	find_pos(t_stack *stack, int data)
 {
-    int pos;
-    int len;
-    t_stack *current;
+	int		pos;
+	int		len;
+	t_stack	*current;
 
-    pos = 0;
-    len = stack_len(stack);
-    current = stack;
-    while (current && data > current->data)
-    {
-        pos++;
-        current = current->next;
-    }
-    if (pos == len)
-        return (0);
-    return (pos);
+	pos = 0;
+	len = stack_len(stack);
+	current = stack;
+	while (current && data > current->data)
+	{
+		pos++;
+		current = current->next;
+	}
+	if (pos == len)
+		return (0);
+	return (pos);
 }
-

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:28:05 by shamzaou         ###   ########.fr       */
+/*   Created: 2023/04/08 17:44:33 by shamzaou          #+#    #+#             */
+/*   Updated: 2023/04/27 13:57:13 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	two_sort(t_stack **stack)
 			sa(stack);
 	}
 }
+
 void	three_sort(t_stack **stack_a)
 {
 	int	top;
@@ -52,8 +53,6 @@ void	five_sort(t_stack **stack_a)
 	t_stack	*stack_b;
 	int		stack_len_a;
 	int		elements_to_move;
-	int		min_pos;
-	int		direction;
 
 	stack_b = NULL;
 	stack_len_a = stack_len(*stack_a);
@@ -62,22 +61,7 @@ void	five_sort(t_stack **stack_a)
 	elements_to_move = stack_len_a - 3;
 	while (elements_to_move > 0)
 	{
-		stack_len_a = stack_len(*stack_a);
-		min_pos = find_smallest_node_position(*stack_a);
-		direction = ra_or_rra(*stack_a, min_pos);
-		if (direction == 1)
-		{
-			min_pos = min_pos - 1;
-			while (min_pos-- > 0)
-				ra(stack_a);
-		}
-		else
-		{
-			min_pos = stack_len_a - min_pos + 1;
-			while (min_pos-- > 0)
-				rra(stack_a);
-		}
-		pb(stack_a, &stack_b);
+		move_smallest_to_b(stack_a, &stack_b);
 		elements_to_move--;
 	}
 	three_sort(stack_a);
@@ -85,80 +69,46 @@ void	five_sort(t_stack **stack_a)
 		pa(stack_a, &stack_b);
 }
 
-int	stack_len(t_stack *stack)
+int	get_max_bits(t_stack *stack)
 {
-	int	len;
+	int	max_value;
+	int	bits;
 
-	len = 0;
+	max_value = INT_MIN;
+	bits = 0;
 	while (stack)
 	{
-		len++;
+		if (stack->index > max_value)
+			max_value = stack->index;
 		stack = stack->next;
 	}
-	return (len);
+	while (max_value)
+	{
+		max_value >>= 1;
+		bits++;
+	}
+	return (bits);
 }
 
-int	find_smallest_node_position(t_stack *head)
+void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*current;
-	int		smallest;
-	int		position;
-	int		smallest_position;
+	int	i;
+	int	max_bits;
+	int	len;
 
-	if (head == NULL)
-		return (-1);
-	current = head;
-	smallest = current->data;
-	position = 1;
-	smallest_position = 0;
-	while (current != NULL)
+	i = -1;
+	max_bits = get_max_bits(*stack_a);
+	while (++i < max_bits)
 	{
-		if (current->data < smallest)
+		len = stack_len(*stack_a);
+		while (len-- > 0)
 		{
-			smallest = current->data;
-			smallest_position = position;
+			if ((((*stack_a)->index >> i) & 1) == 1)
+				ra(stack_a);
+			else
+				pb(stack_a, stack_b);
 		}
-		position++;
-		current = current->next;
+		while (*stack_b)
+			pa(stack_a, stack_b);
 	}
-	return (smallest_position);
-}
-
-int	find_largest_node_position(t_stack *head)
-{
-	int		pos;
-	int		largest_pos;
-	t_stack	*current;
-	t_stack	*largest_node;
-
-	pos = 1;
-	largest_pos = 1;
-	if (head == NULL)
-	{
-		return (0);
-	}
-	current = head;
-	largest_node = head;
-	while (current != NULL)
-	{
-		if (current->data > largest_node->data)
-		{
-			largest_node = current;
-			largest_pos = pos;
-		}
-		pos++;
-		current = current->next;
-	}
-	return (largest_pos);
-}
-
-int	ra_or_rra(t_stack *stack, int position)
-{
-	int	stack_size;
-
-	stack_size = stack_len(stack);
-	if (position <= stack_size / 2)
-		return (1);
-	else
-		return (-1);
 }

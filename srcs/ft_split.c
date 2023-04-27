@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toolbox2.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 23:44:43 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/31 23:44:55 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:40:27 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ static size_t	str_length(char const *str, char c, size_t	start)
 
 	length = start;
 	while (str[length] && str[length] != c)
-	{
 		length++;
-	}
 	length = length - start;
 	return (length);
 }
