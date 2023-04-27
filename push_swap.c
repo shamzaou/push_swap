@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:47:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/25 10:23:16 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 08:14:29 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 	if (count == 0)
 		ft_error();
 	stack_a = create_stack(count, arr);
+	//printf("stack len : %d\n", stack_len(stack_a));
 	assign_indexes(&stack_a);
 	free(arr);
 	/*print_list(stack_a);
@@ -46,7 +47,7 @@ int	main(int argc, char **argv)
 		stack_a = stack_a->next;
 	}*/
 	
-	is_stack_sorted(stack_a);
+	is_stack_sorted(&stack_a);
 	sort(&stack_a);
 	//print_list(stack_a);
 	free_stack(&stack_a);

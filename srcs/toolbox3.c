@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 22:19:00 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/25 09:20:38 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 08:13:05 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-void    is_stack_sorted(t_stack *stack)
+void    is_stack_sorted(t_stack **stack)
 {
     t_stack *current;
 
-    current = stack;
+    current = *stack;
     while (current->next != NULL)
     {
         if (current->data > current->next->data)
             return;
         current = current->next;
     }
+    free_stack(stack);
     exit(12);
 }
 
@@ -65,15 +66,3 @@ int find_pos(t_stack *stack, int data)
     return (pos);
 }
 
-void    free_tokens(char **tokens)
-{
-    int i;
-
-    i = 0;
-    while (tokens[i])
-    {
-        free(tokens[i]);
-        i++;
-    }
-    free(tokens);
-}

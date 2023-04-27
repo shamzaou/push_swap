@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/25 10:22:46 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 08:12:39 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void				print_list(t_stack *head);
 void				ft_error(void);
 int					ft_isdigit(int n);
 int					skip_space(char *str);
-int					ft_atoi(char *str);
+int					ft_atoi(char *str, t_error_data *s_error_data);
 int					is_sign(char *str);
 int					is_int(char *str);
 int					*convert(int argc, char **argv);
@@ -71,7 +71,7 @@ int					is_only_spaces(const char *str);
 int					is_empty_or_whitespace(const char *str);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
-void				is_stack_sorted(t_stack *stack);
+void				is_stack_sorted(t_stack **stack);
 void				two_sort(t_stack **stack);
 int					find_pos(t_stack *stack, int data);
 int					lst_last(t_stack *head);

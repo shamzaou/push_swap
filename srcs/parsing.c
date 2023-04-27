@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 07:09:59 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 07:56:36 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int is_int(char *str)
 *   Converts values and stores them in an int array.
 *   Checks for duplicates and return Error if found.
 */
-int *convert(int argc, char **argv)
+/*int *convert(int argc, char **argv)
 {
     int *arr;
     int i;
@@ -86,7 +86,7 @@ int *convert(int argc, char **argv)
         i++;
     }
     return (arr);
-}
+}*/
 
 /* parse_args():
 *   This funct will perform parsing of the user input
@@ -103,8 +103,9 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     int i;
     int j;
     char **tokens;
-    t_error_data error_data;
+    t_error_data error_data = {0};
 
+    tokens = NULL;
     if (argc < 2)
         exit(1);
     for (i = 1; i < argc; i++)
@@ -114,24 +115,28 @@ int parse_args(int argc, char **argv, int **arr_ptr)
         total_numbers += count_numbers(argv[i]);
     }
     arr = (int *)malloc(sizeof(int) * total_numbers);
+    error_data.arr = arr;
     if (!arr)
         return (0);
     j = 0;
+    
     for (i = 1; i < argc; i++)
     {
         tokens = ft_split(argv[i], ' ');
+        error_data.tokens = tokens;
         int k = 0;
         while (tokens[k] != NULL)
         {
             if (!is_int2(tokens[k]))
             {
-                error_data.arr = arr;
-                error_data.tokens = tokens;
+                
+                
                 ft_error_handler(&error_data);
             }
-            arr[j++] = ft_atoi(tokens[k]);
+            arr[j++] = ft_atoi(tokens[k], &error_data);
             k++;
         }
+        
         int l = -1;
         while (tokens[++l] != NULL)
             free(tokens[l]);
@@ -188,7 +193,10 @@ int count_numbers(const char *s)
         else if (is_int((char *)s))
             last_was_digit = true;
         else
-            ft_error();
+            {
+                printf("TOKENS FREEDOM\n");
+                ft_error();
+            }
 
         s++;
     }
