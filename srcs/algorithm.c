@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:26:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:16:26 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:28:05 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,6 @@ void	three_sort(t_stack **stack_a)
 		rra(stack_a);
 }
 
-/*void	insert_sorted(t_stack **stack_a, t_stack **stack_b)
-{
-	int	pos;
-
-	pos = find_pos(*stack_a, (*stack_b)->data);
-	if (!((*stack_b)->data < (*stack_a)->data
-			&& (*stack_b)->data > lst_last(*stack_a)))
-		to_the_top(stack_a, pos - 1);
-	pa(stack_a, stack_b);
-	print_list(*stack_a);
-}*/
-
 void	five_sort(t_stack **stack_a)
 {
 	t_stack	*stack_b;
@@ -71,7 +59,6 @@ void	five_sort(t_stack **stack_a)
 	stack_len_a = stack_len(*stack_a);
 	if (stack_len_a < 4 || stack_len_a > 6)
 		return ;
-	// Push the smallest element(s) to stack_b
 	elements_to_move = stack_len_a - 3;
 	while (elements_to_move > 0)
 	{
@@ -94,11 +81,8 @@ void	five_sort(t_stack **stack_a)
 		elements_to_move--;
 	}
 	three_sort(stack_a);
-	// Move elements back from stack_b to stack_a
 	while (stack_b)
-	{
 		pa(stack_a, &stack_b);
-	}
 }
 
 int	stack_len(t_stack *stack)
@@ -174,13 +158,7 @@ int	ra_or_rra(t_stack *stack, int position)
 
 	stack_size = stack_len(stack);
 	if (position <= stack_size / 2)
-	{
-		// Use ra to reach the position
 		return (1);
-	}
 	else
-	{
-		// Use rra to reach the position
 		return (-1);
-	}
 }
