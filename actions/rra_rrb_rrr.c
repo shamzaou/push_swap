@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   rra_rrb_rrr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 22:45:16 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/08 11:54:11 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:07:28 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack *rev_rotate(t_stack *stack)
+static t_stack *rev_rotate(t_stack *stack)
 {
     t_stack *first;
-    //t_stack *second;
     t_stack *last;
     
     if (stack == NULL || stack->next == NULL)
         return (stack);
     first = stack;
-    //second = stack->next;
     last = stack;
     while (last->next != NULL)
         last = last->next;

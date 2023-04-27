@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 07:56:36 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:08:55 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdbool.h>
 
 /* is_sign():
 *   Returns 1 if the element is a sign.
@@ -58,36 +57,6 @@ int is_int(char *str)
     return (1);
 }
 
-/* convert():
-*   Converts values and stores them in an int array.
-*   Checks for duplicates and return Error if found.
-*/
-/*int *convert(int argc, char **argv)
-{
-    int *arr;
-    int i;
-    int j;
-    
-    arr = (int *)malloc(sizeof(int) * (argc - 1));
-    if (!arr)
-        return (0);
-    i = 1;
-    j = 0;
-    while (argv[i])
-    {
-        arr[i - 1] = ft_atoi(argv[i]);
-        j = 0;
-        while (j < i - 1)
-        {
-            if (arr[i - 1] == arr[j])
-                ft_error();
-            j++;
-        }
-        i++;
-    }
-    return (arr);
-}*/
-
 /* parse_args():
 *   This funct will perform parsing of the user input
 *   1. Checks the existence of at least one argument.
@@ -119,7 +88,6 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     if (!arr)
         return (0);
     j = 0;
-    
     for (i = 1; i < argc; i++)
     {
         tokens = ft_split(argv[i], ' ');
@@ -128,21 +96,15 @@ int parse_args(int argc, char **argv, int **arr_ptr)
         while (tokens[k] != NULL)
         {
             if (!is_int2(tokens[k]))
-            {
-                
-                
                 ft_error_handler(&error_data);
-            }
             arr[j++] = ft_atoi(tokens[k], &error_data);
             k++;
         }
-        
         int l = -1;
         while (tokens[++l] != NULL)
             free(tokens[l]);
         free(tokens);
     }
-
     for (i = 0; i < total_numbers; i++)
     {
         for (j = i + 1; j < total_numbers; j++)
@@ -155,11 +117,9 @@ int parse_args(int argc, char **argv, int **arr_ptr)
             }
         }
     }
-
     *arr_ptr = arr;
     return total_numbers;
 }
-
 
 // Add a new helper function to check if a string contains only spaces
 int is_only_spaces(const char *str)
@@ -172,7 +132,6 @@ int is_only_spaces(const char *str)
     }
     return 1;
 }
-
 
 int count_numbers(const char *s)
 {
@@ -193,19 +152,16 @@ int count_numbers(const char *s)
         else if (is_int((char *)s))
             last_was_digit = true;
         else
-            {
-                printf("TOKENS FREEDOM\n");
-                ft_error();
-            }
-
+        {
+            printf("TOKENS FREEDOM\n");
+            ft_error();
+        }
         s++;
     }
     if (last_was_digit)
         count++;
-
     if (in_quotes)
         ft_error();
-
     return count;
 }
 

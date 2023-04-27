@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   toolbox.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:40:59 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 07:54:45 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:03:48 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void ft_error_handler(t_error_data *error_data)
         {
             free_tokens(error_data->tokens);
         }
-    
     ft_error();
 }
 

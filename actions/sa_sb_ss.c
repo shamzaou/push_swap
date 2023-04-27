@@ -6,13 +6,13 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:49:33 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/03/29 22:39:55 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:07:43 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack *swap(t_stack *stack_to_swap)
+static t_stack *swap(t_stack *stack_to_swap)
 {
     t_stack *first;
     t_stack *second;
@@ -24,7 +24,6 @@ t_stack *swap(t_stack *stack_to_swap)
     first->next = second->next;
     if (second->next != NULL)
         second->next->prev = first;
-
     second->prev = first->prev;
     if (first->prev != NULL)
         first->prev->next = second;

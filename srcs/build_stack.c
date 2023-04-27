@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 10:23:21 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/24 10:52:27 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:05:49 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ void    append_node(int data, t_stack **prevNode)
 t_stack *create_stack(int argc, int *arr)
 {
     int i;
-    t_stack *head = NULL;
+    t_stack *head;
     
+    head = NULL;
     t_stack *node = malloc(sizeof(t_stack));
+    if (!node)
+        return (NULL);
     node->data = arr[0];
     node->prev = NULL;
     node->next = NULL;
     head = node;
-    
     i = 1;
     if (argc > 1)
     {
@@ -49,8 +51,7 @@ t_stack *get_next_min_value(t_stack *stack, long last_min_value)
 {
     long min_value;
     t_stack *smallest_next_node;
-    
-    
+
     min_value = 2147483649;
     smallest_next_node = NULL;
     while (stack)
