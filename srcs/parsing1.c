@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing2.c                                         :+:      :+:    :+:   */
+/*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 14:28:35 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 14:29:24 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:37:38 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+static int	process_quotes(const char *s, bool *in_quotes);
+static int	process_digits(const char *s, bool in_quotes, bool *last_was_digit,
+				int *count);
 
 int	count_numbers(const char *s)
 {

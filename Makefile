@@ -11,7 +11,8 @@ SRC = $(SRC_DIR)/sort.c \
 		$(SRC_DIR)/error_handling.c \
 		$(SRC_DIR)/build_stack.c \
 		$(SRC_DIR)/ft_split.c \
-		$(SRC_DIR)/parsing.c \
+		$(SRC_DIR)/parsing0.c \
+		$(SRC_DIR)/parsing1.c \
 		$(SRC_DIR)/toolbox0.c \
 		$(SRC_DIR)/toolbox1.c \
 		$(SRC_DIR)/toolbox2.c \

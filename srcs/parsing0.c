@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 14:32:20 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:35:04 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	parse_args(int argc, char **argv, int **arr_ptr)
 	int				*arr;
 	t_error_data	error_data;
 
-	error_data = {0};
+	error_data.arr = NULL;
+	error_data.tokens = NULL;
 	total_numbers = parse_and_count_args(argc, argv);
 	arr = (int *)malloc(sizeof(int) * total_numbers);
 	error_data.arr = arr;
@@ -104,6 +105,7 @@ void	fill_array(int argc, char **argv, int *arr, t_error_data *error_data)
 void	check_duplicates(int *arr, int total_numbers, t_error_data *error_data)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
