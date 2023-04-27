@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ra_rb_rr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 22:45:19 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:06:54 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:14:07 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 *   2. Find the last element in the list.
 *   3. Assign the correct values to First, Second and Last.
 */
-static t_stack *rotate(t_stack *stack)
+t_stack *rotate(t_stack *stack)
 {
     t_stack *first;
     t_stack *second;

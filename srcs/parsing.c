@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:08:55 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:12:46 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,10 +152,7 @@ int count_numbers(const char *s)
         else if (is_int((char *)s))
             last_was_digit = true;
         else
-        {
-            printf("TOKENS FREEDOM\n");
             ft_error();
-        }
         s++;
     }
     if (last_was_digit)

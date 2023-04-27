@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sa_sb_ss.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:49:33 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:07:43 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:14:20 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_stack *swap(t_stack *stack_to_swap)
+t_stack *swap(t_stack *stack_to_swap)
 {
     t_stack *first;
     t_stack *second;

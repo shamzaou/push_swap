@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pa_pb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 22:45:11 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/03 07:01:55 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:14:28 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void push(t_stack **stack_a, t_stack **stack_b)
+void push(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *first_a;
     
