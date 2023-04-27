@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/25 10:43:46 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/27 07:09:59 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int is_int2(char *str)
         return (0);
     return (1);
 }
+
 int is_int(char *str)
 {
     int i;
@@ -102,9 +103,8 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     int i;
     int j;
     char **tokens;
+    t_error_data error_data;
 
-    t_error_data error_data = {0};
-    tokens = NULL;
     if (argc < 2)
         exit(1);
     for (i = 1; i < argc; i++)
@@ -116,26 +116,26 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     arr = (int *)malloc(sizeof(int) * total_numbers);
     if (!arr)
         return (0);
-    error_data.arr = arr;
-    error_data.tokens = tokens;
     j = 0;
     for (i = 1; i < argc; i++)
     {
         tokens = ft_split(argv[i], ' ');
-        error_data.tokens = tokens;
         int k = 0;
         while (tokens[k] != NULL)
         {
             if (!is_int2(tokens[k]))
-                {
-                    error_data.arr = arr;
+            {
+                error_data.arr = arr;
                 error_data.tokens = tokens;
-                    ft_error_handler(&error_data);
-                }
+                ft_error_handler(&error_data);
+            }
             arr[j++] = ft_atoi(tokens[k]);
             k++;
         }
-        ft_error_handler(&error_data);
+        int l = -1;
+        while (tokens[++l] != NULL)
+            free(tokens[l]);
+        free(tokens);
     }
 
     for (i = 0; i < total_numbers; i++)
@@ -144,6 +144,8 @@ int parse_args(int argc, char **argv, int **arr_ptr)
         {
             if (arr[i] == arr[j])
             {
+                error_data.arr = arr;
+                error_data.tokens = NULL;
                 ft_error_handler(&error_data);
             }
         }
@@ -152,6 +154,7 @@ int parse_args(int argc, char **argv, int **arr_ptr)
     *arr_ptr = arr;
     return total_numbers;
 }
+
 
 // Add a new helper function to check if a string contains only spaces
 int is_only_spaces(const char *str)
