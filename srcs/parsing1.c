@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 14:28:35 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 14:37:38 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:01:28 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static int	process_digits(const char *s, bool in_quotes, bool *last_was_digit,
 	return (0);
 }
 
-// Add a new helper function to check if a string contains only spaces
 int	is_only_spaces(const char *str)
 {
 	while (*str)

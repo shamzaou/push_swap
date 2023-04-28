@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 22:19:00 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 11:03:17 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:05:00 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,4 @@ void	is_stack_sorted(t_stack **stack)
 	}
 	free_stack(stack);
 	exit(12);
-}
-
-int	lst_last(t_stack *head)
-{
-	if (!head)
-		return (0);
-	while (head && head->next)
-		head = head->next;
-	return (head->data);
-}
-
-int	find_pos(t_stack *stack, int data)
-{
-	int		pos;
-	int		len;
-	t_stack	*current;
-
-	pos = 0;
-	len = stack_len(stack);
-	current = stack;
-	while (current && data > current->data)
-	{
-		pos++;
-		current = current->next;
-	}
-	if (pos == len)
-		return (0);
-	return (pos);
 }

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:53:02 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 14:19:32 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:04:54 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ int					ft_isdigit(int n);
 void				ft_swap(int *a, int *b);
 
 void				is_stack_sorted(t_stack **stack);
-int					find_pos(t_stack *stack, int data);
-int					lst_last(t_stack *head);
 t_stack				*get_next_min_value(t_stack *stack, long last_min_value);
 void				assign_indexes(t_stack **stack);
 int					stack_len(t_stack *stack);

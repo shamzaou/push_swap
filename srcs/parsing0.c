@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:13:39 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/27 14:35:04 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:01:12 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	is_sign(char *str)
 *   1. Checks the existence of at least one argument.
 *   2. Checks for non integer numeric input.
 *   3. Convert the input to an int array with ft_atoi
-*       that will check for overflow and underflow.
-*   4. Checks for duplicates inside convert().
+*       that will check for overflow.
+*   4. Checks for duplicates.
 */
 int	parse_args(int argc, char **argv, int **arr_ptr)
 {
